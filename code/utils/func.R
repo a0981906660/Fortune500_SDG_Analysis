@@ -1,4 +1,7 @@
 # Functions repeatedly used
+library(dplyr)
+library(stringr)
+library(assertthat)
 
 getRankCodeMap <- function(EXCEL_PATH = "./data/raw_data/TM Final_FortuneG500 (2021)_v2.xlsx"){
   "
@@ -52,18 +55,8 @@ readReports <- function(NAICS2_CODE) {
   ## Create a new df to store the path of the file to read and the contents
   df_doc <- tibble()
   for (txt in txt.toRead) {
-    filename <- str_replace(txt, "./data/raw_data/Fortune_500_report/", "") %>% 
-      str_extract("\\d+(\\s\\w+)+")
-    # TODO: fixed the filename
-      # str_extract("\\d+(\\s[A-Z\\&'\\.\\(\\)\\-éóú]+)+")
-      # 220 Shaanxi Coal & Chemical Industry/Shaanxi Coal & Chemical Industry AR txt/Shaanxi Coal & Chemical Industry no AR.txt
-      # 191 Alimentation Couche-Tard/Shaanxi Coal & Chemical Industry AR txt/Shaanxi Coal & Chemical Industry no AR.txt
-      # 237 América Móvil/Shaanxi Coal & Chemical Industry AR txt/Shaanxi Coal & Chemical Industry no AR.txt
-      # 146 Archer Daniels Midland (ADM)/Shaanxi Coal & Chemical Industry no AR.txt
-      # 148 Xiamen C&D/Shaanxi Coal & Chemical Industry no AR.txt
-      # 328 Suning.com Group/Shaanxi Coal & Chemical Industry no AR.txt
-      # 314 J. Sainsbury/Shaanxi Coal & Chemical Industry no AR.txt
-      # 322 Itaú Unibanco Holding/Shaanxi Coal & Chemical Industry no AR.txt
+    filename <- parseFilenameFromPath(txt)
+    
     year <- str_extract(txt, "20\\d{2}")
     df.tmp <- read_lines(txt) %>% 
       as_tibble() %>% 
@@ -80,3 +73,41 @@ readReports <- function(NAICS2_CODE) {
   
   return(df_doc)
 }
+
+parseFilenameFromPath <- function(txt_path) {
+  filename <- txt_path %>% 
+    str_replace("./data/raw_data/Fortune_500_report/", "") %>% 
+    str_extract("\\d+.+?/") %>% 
+    str_remove("/")
+  return(filename)
+}
+
+testParseFilenameFromPath <- function() {
+  testStrings <- c("220 Shaanxi Coal & Chemical Industry/Shaanxi Coal & Chemical Industry AR txt/Shaanxi Coal & Chemical Industry no AR.txt",
+                  "191 Alimentation Couche-Tard/Shaanxi Coal & Chemical Industry AR txt/Shaanxi Coal & Chemical Industry no AR.txt",
+                  "237 América Móvil/Shaanxi Coal & Chemical Industry AR txt/Shaanxi Coal & Chemical Industry no AR.txt",
+                  "146 Archer Daniels Midland (ADM)/Shaanxi Coal & Chemical Industry no AR.txt",
+                  "148 Xiamen C&D/Shaanxi Coal & Chemical Industry no AR.txt",
+                  "328 Suning.com Group/Shaanxi Coal & Chemical Industry no AR.txt",
+                  "314 J. Sainsbury/Shaanxi Coal & Chemical Industry no AR.txt",
+                  "322 Itaú Unibanco Holding/Shaanxi Coal & Chemical Industry no AR.txt"
+                  )
+  expectedStrings <- c("220 Shaanxi Coal & Chemical Industry",
+                       "191 Alimentation Couche-Tard",
+                       "237 América Móvil",
+                       "146 Archer Daniels Midland (ADM)",
+                       "148 Xiamen C&D",
+                       "328 Suning.com Group",
+                       "314 J. Sainsbury",
+                       "322 Itaú Unibanco Holding"
+                       )
+  for (i in seq_along(testStrings)) {
+    assertthat::assert_that(
+      are_equal(expectedStrings[i],
+                parseFilenameFromPath(testStrings[i]))
+    )
+  }
+  cat("All tests pass")
+}
+
+testParseFilenameFromPath()
