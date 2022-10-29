@@ -13,10 +13,11 @@ df.RankCode <- getRankCodeMap("./data/raw_data/TM Final_FortuneG500 (2021)_v2.xl
 ## df.doc <- readReports(NAICS2_CODE = 31)
 ## df.doc <- readReports(NAICS2_CODE = 21)
 NAICS2 <- 21
+# We have name, rank, year, value (the content of the report) in the following datafram
 df.doc <- readReports(NAICS2_CODE = NAICS2)
 
 
-
+# Here we tokenize the content of the report 
 df.word <- df.doc %>% 
   unnest_tokens(output = word, input = value, token = "words") %>% 
   filter(!word %in% stopwords::stopwords()) %>% 
@@ -26,6 +27,7 @@ df.word <- df.doc %>%
   filter(!str_detect(word, "\\d+")) %>% 
   filter(!word %in% weak_words)
 
+# Here we compute the total number of words used in the reports for a firm within a year
 df.wordlen <- df.word %>% 
   group_by(year, rank) %>% 
   count(name) %>% 
@@ -34,6 +36,7 @@ df.wordlen <- df.word %>%
 # Join two dataframes from script 1 and 2
 df.word %>% head()
 df_final_key %>% head()
+# TODO: make sure the names of firms are aligned
 df.wordCount <- read_rds(paste0("./data/cleaned_data/df_wordCount_NAICS", NAICS2, ".rds"))
 
 df.combine <- df.wordCount %>%
@@ -68,8 +71,8 @@ df.plot <- df.long_join %>%
   mutate(sdg = as_factor(sdg)) %>%
   mutate(sdg = fct_reorder(sdg, sdg_number))
 
-# change company names
-df.pplot <- df.plot %>% 
+# manually change company names
+df.plot <- df.plot %>% 
   mutate(name = ifelse(name == "Oil", "Oil & Natural Gas", name))
 
 ## assign factor level to the names
@@ -79,14 +82,13 @@ df.plot <- df.plot %>%
   # mutate(name = paste0(name, " ", naics)) %>% 
   mutate(name = as_factor(name)) %>% 
   mutate(name = fct_reorder(name, naics))
-
   
-df.plot$name
-
+## Just checking that names are "factor" now
+# df.plot$name
 df.plot$name %>% unique()
 
 
-# TODO: sort companies by NAICS code
+# sort companies by NAICS code
 p1 <- df.plot %>%
   ggplot(aes(x = name, y = sdg, fill = per_keyword)) + 
   # grid plot
