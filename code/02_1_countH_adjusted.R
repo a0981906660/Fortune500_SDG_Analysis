@@ -18,7 +18,7 @@ df.RankCode <- getRankCodeMap("./data/raw_data/TM Final_FortuneG500 (2021)_v2.xl
 
 ## A BETTER WAY TO SELECT NAICS STARTING WITH XX
 ## TODO: Change the following code if needed
-NAICS2_CODE <- 31
+NAICS2_CODE <- 21
 df.doc <- readReports(NAICS2_CODE)
 
 
@@ -55,3 +55,4 @@ for (txtfile in unique(df_sentence$name)) {
 ## Save files
 path_name <- paste0("./data/cleaned_data/df_wordCount_NAICS", NAICS2_CODE, ".rds")
 df_keyword_n %>% write_rds(path_name)
+
