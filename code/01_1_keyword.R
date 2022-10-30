@@ -59,7 +59,8 @@ df_bind <- df_keyword_nspace %>%
   arrange(SDG_order) %>% 
   select(ID, sdg, word) 
 
-# clean up env
+# clean up env 
+# rm= remove setdiff=setdifference ls()= environment裡面全部東西列出 c(內容)=要留的
 rm(list=setdiff(ls(), c("df_bind", "df_keyword_unnest")))
 
 # Load the manual edited keyword mapping
