@@ -18,18 +18,22 @@ df.RankCode <- getRankCodeMap("./data/raw_data/TM Final_FortuneG500 (2021)_v2.xl
 
 ## A BETTER WAY TO SELECT NAICS STARTING WITH XX
 ## TODO: Change the following code if needed
-NAICS2_CODE <- 21
+NAICS2_CODE <- 31
 df.doc <- readReports(NAICS2_CODE)
 
 
 # compute word count
 ## post-processing the read files
+#' @note "\x0b" is a special non-UTF8 character that cannot be encoded, so we need to remove it
+#' https://stackoverflow.com/questions/43533486/utf8-null-character-normalizing-whitespace-characters
 df_sentence <- df.doc %>% 
   # convert character vector between encodings
-  mutate(value = iconv(value, "", "UTF-8")) %>% 
+  mutate(value = stringr::str_replace(value, "\x0b", "")) %>% 
+  # mutate(value = iconv(value, "", "utf8", sub = "")) %>%
   unnest_tokens(output = text, input = value, token = "sentences") %>% 
   drop_na() %>% 
   arrange(rank)
+
 
 ## New an empty tibble to store the final result
 df_keyword_n <- tibble()
