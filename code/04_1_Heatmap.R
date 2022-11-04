@@ -13,7 +13,7 @@ df.RankCode <- getRankCodeMap("./data/raw_data/TM Final_FortuneG500 (2021)_v2.xl
 ## df.doc <- readReports(NAICS2_CODE = 31)
 ## df.doc <- readReports(NAICS2_CODE = 21)
 ## df.doc <- readReports(NAICS2_CODE = 33)
-NAICS2 <- 33
+NAICS2 <- 31
 # We have name, rank, year, value (the content of the report) in the following datafram
 df.doc <- readReports(NAICS2_CODE = NAICS2)
 
@@ -29,10 +29,18 @@ df.word <- df.doc %>%
   filter(!word %in% weak_words)
 
 # Here we compute the total number of words used in the reports for a firm within a year
-df.wordlen <- df.word %>% 
-  group_by(year, rank) %>% 
-  count(name) %>% 
-  mutate(name = str_replace(name, "\\d+\\s", ""))
+# this number is going to be the denominator
+df.wordlen <- df.word %>%
+  group_by(year, rank) %>%
+  count(name) %>%
+  mutate(name = str_replace(name, "\\d+\\s", "")) %>% 
+  ungroup()
+df.wordlen <- df.wordlen %>% 
+  mutate(name = str_remove(name, "_20\\d{2}")) %>% 
+  group_by(rank, name) %>% 
+  summarise(n = sum(n)) %>% 
+  ungroup()
+
 
 # Join two dataframes from script 1 and 2
 df.word %>% head()
@@ -48,22 +56,30 @@ df.combine <- df.wordCount %>%
          name = str_replace(name, "\\d+\\s", ""))
 
 
+## Find the numerator regardless of year
+## the group's primary key is firm's name and SDG category
 df.long <- df.combine %>% 
   filter(n_keyword > 0) %>%
-  group_by(name, sdg) %>% 
+  group_by(rank, name, sdg) %>% 
   summarise(n_keyword = sum(n_keyword),
             rank = head(rank, 1)
             ) %>% 
   ungroup()
 
+## combine the 
+# df.long_join <- df.long %>% 
+#   left_join(df.wordlen %>% 
+#               group_by(rank, name) %>% 
+#               summarise(n = sum(n)) %>% 
+#               mutate(year = str_extract(name, "_20\\d{2}"),
+#                      year = as.numeric(str_remove(year, "_")),
+#                      name = str_remove(name, "_20\\d{2}")) %>% 
+#               ungroup(),
+#             by = c("rank", "name")
+#             ) %>%
+#   mutate(per_keyword = n_keyword/n)
 df.long_join <- df.long %>% 
-  left_join(df.wordlen %>% 
-              group_by(name) %>% 
-              summarise(n = sum(n)) %>% 
-              mutate(year = str_extract(name, "_20\\d{2}"),
-                     year = as.numeric(str_remove(year, "_")),
-                     name = str_remove(name, "_20\\d{2}"))
-            ) %>%
+  left_join(df.wordlen, by = c("rank", "name")) %>%
   mutate(per_keyword = n_keyword/n)
 
 # Plot
