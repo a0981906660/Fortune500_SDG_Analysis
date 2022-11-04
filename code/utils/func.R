@@ -102,12 +102,16 @@ testParseFilenameFromPath <- function() {
                        "322 Itaú Unibanco Holding"
                        )
   for (i in seq_along(testStrings)) {
+    cat(">>> Test case ", i, "\n")
+    cat(">>>  test string is: ", testStrings[i], "\n")
+    cat(">>>  expected result: ", expectedStrings[i], "\n")
+    cat(">>>  parsed result is: ", parseFilenameFromPath(testStrings[i]), "\n\n")
     assertthat::assert_that(
       are_equal(expectedStrings[i],
                 parseFilenameFromPath(testStrings[i]))
     )
   }
-  cat("All tests pass")
+  cat(">>> All tests pass\n")
 }
 
 testParseFilenameFromPath()
