@@ -1,4 +1,5 @@
 rm(list = ls())
+
 #' 06
 #' @description This script creates a table that lists the most frequent keywords across industies
 #' NAICS code starting with 21, 31, 33 are considered for now
@@ -18,20 +19,24 @@ findMostFreqKeyword <- function(NAICS_Code2) {
     # merge back the original keyword
     left_join(df_final_key, by = c("keyword" = "word")) %>% 
     # there are duplicates coz a keyword may be in multiple SDG categories
-    select(-sdg) %>% 
+    # select(-sdg) %>% 
     distinct() %>% 
     # sort by frequency
     arrange(desc(n_keyword)) %>% 
-    group_by(original_keyword) %>% 
+    group_by(original_keyword, sdg) %>% 
     summarise(original_keyword = head(original_keyword, 1),
               keyword = head(keyword, 1),
               n_keyword = max(n_keyword)) %>% 
+    ungroup() %>% 
     arrange(desc(n_keyword)) %>% 
     distinct() %>% 
     # take the top 15 most frequent
     slice(1:15) %>% 
-    pull(original_keyword) %>% 
-    return()
+    # select(sdg, original_keyword)
+    select(original_keyword) %>% 
+    pull(original_keyword)
+    # pull(original_keyword) %>% 
+    # return()
 }
 
 # find the most frequent keywords across industry
@@ -54,5 +59,5 @@ df.table %>%
 # export latex code
 df.table %>% 
   kbl(caption = "test", booktabs = T, format = 'latex') %>% 
-  kable_styling(latex_options = c("striped", "hold_position")) %>% 
+  # kable_styling(latex_options = c("striped", "hold_position")) %>% 
   save_kable(file = './data/result/tab_keyword_frequency.tex')
