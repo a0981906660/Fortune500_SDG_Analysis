@@ -12,7 +12,8 @@ df.RankCode <- getRankCodeMap("./data/raw_data/TM Final_FortuneG500 (2021)_v2.xl
 ## For example:
 ## df.doc <- readReports(NAICS2_CODE = 31)
 ## df.doc <- readReports(NAICS2_CODE = 21)
-NAICS2 <- 21
+## df.doc <- readReports(NAICS2_CODE = 33)
+NAICS2 <- 33
 # We have name, rank, year, value (the content of the report) in the following datafram
 df.doc <- readReports(NAICS2_CODE = NAICS2)
 
@@ -72,8 +73,8 @@ df.plot <- df.long_join %>%
   mutate(sdg = fct_reorder(sdg, sdg_number))
 
 # manually change company names
-df.plot <- df.plot %>% 
-  mutate(name = ifelse(name == "Oil", "Oil & Natural Gas", name))
+# df.plot <- df.plot %>% 
+  # mutate(name = ifelse(name == "Oil", "Oil & Natural Gas", name))
 
 ## assign factor level to the names
 df.plot <- df.plot %>% 
