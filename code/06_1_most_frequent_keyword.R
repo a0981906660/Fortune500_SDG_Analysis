@@ -43,12 +43,15 @@ findMostFreqKeyword <- function(NAICS_Code2) {
 # find the most frequent keywords across industry
 col21 <- findMostFreqKeyword(21)
 col31 <- findMostFreqKeyword(31)
+col33 <- findMostFreqKeyword(33)
 
 df.table <- bind_cols(
   NAICS21 = col21$original_keyword,
   `SDG` = col21$sdg,
   NAICS31 = col31$original_keyword,
-  `SDG ` = col31$sdg
+  `SDG ` = col31$sdg,
+  NAICS33 = col33$original_keyword,
+  `SDG  ` = col33$sdg
 )
 
 
@@ -57,7 +60,7 @@ kbl(df.table) %>%
   kable_paper("hover", full_width = F)
 
 df.table %>% 
-  kbl(caption = "Recreating booktabs style table") %>%
+  kbl(caption = "Top 15 frequent keywords show up in the documents") %>%
   kable_classic(full_width = F, html_font = "Cambria")
 
 # export latex code
