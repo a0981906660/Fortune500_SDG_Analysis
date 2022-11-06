@@ -3,6 +3,7 @@
 *_OLD.rds
 ~$*.xlsx
 data/rds/*.rds
+data/rds
 data/raw_data/Fortune_500_report/*
 # History files
 .Rhistory
