@@ -1,5 +1,5 @@
 # rm(list = ls())
-rm(list = setdiff(ls(), c("NAICS2_CODE", "NAICS2_CODES")))
+rm(list = setdiff(ls(), c("NAICS2_CODE", "NAICS2_CODES", "timeSpent", "t0", "t1")))
 library(tidyverse)
 library(tidytext)
 library(stringi)
