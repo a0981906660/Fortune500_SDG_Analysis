@@ -84,13 +84,14 @@ dfs_sentence <- split(df_sentence, df_sentence$name)
 length(dfs_sentence)
 
 # do parallel
-t0 <- Sys.time()
+t1 <- Sys.time()
+cat(">>> Doing parallel computing with ", n_cores, " cores.\n")
 res <- foreach (x = dfs_sentence,
                 .combine = rbind) %dopar% {
                   countWords(x)
                 }
-t1 <- Sys.time()
-cat(">>> Time used: ", format(t1 - t0), "\n")
+t2 <- Sys.time()
+cat(">>> Time used: ", format(t2 - t1), "\n")
 
 ## Save files
 path_name <- paste0("./data/cleaned_data/df_wordCount_NAICS", NAICS2_CODE, ".rds")
