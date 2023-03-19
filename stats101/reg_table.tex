@@ -1,0 +1,378 @@
+% Options for packages loaded elsewhere
+\PassOptionsToPackage{unicode}{hyperref}
+\PassOptionsToPackage{hyphens}{url}
+%
+\documentclass[
+]{article}
+\usepackage{amsmath,amssymb}
+\usepackage{lmodern}
+\usepackage{iftex}
+\ifPDFTeX
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8]{inputenc}
+  \usepackage{textcomp} % provide euro and other symbols
+\else % if luatex or xetex
+  \usepackage{unicode-math}
+  \defaultfontfeatures{Scale=MatchLowercase}
+  \defaultfontfeatures[\rmfamily]{Ligatures=TeX,Scale=1}
+\fi
+% Use upquote if available, for straight quotes in verbatim environments
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+\IfFileExists{microtype.sty}{% use microtype if available
+  \usepackage[]{microtype}
+  \UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
+}{}
+\makeatletter
+\@ifundefined{KOMAClassName}{% if non-KOMA class
+  \IfFileExists{parskip.sty}{%
+    \usepackage{parskip}
+  }{% else
+    \setlength{\parindent}{0pt}
+    \setlength{\parskip}{6pt plus 2pt minus 1pt}}
+}{% if KOMA class
+  \KOMAoptions{parskip=half}}
+\makeatother
+\usepackage{xcolor}
+\usepackage[margin=1in]{geometry}
+\usepackage{color}
+\usepackage{fancyvrb}
+\newcommand{\VerbBar}{|}
+\newcommand{\VERB}{\Verb[commandchars=\\\{\}]}
+\DefineVerbatimEnvironment{Highlighting}{Verbatim}{commandchars=\\\{\}}
+% Add ',fontsize=\small' for more characters per line
+\usepackage{framed}
+\definecolor{shadecolor}{RGB}{248,248,248}
+\newenvironment{Shaded}{\begin{snugshade}}{\end{snugshade}}
+\newcommand{\AlertTok}[1]{\textcolor[rgb]{0.94,0.16,0.16}{#1}}
+\newcommand{\AnnotationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\AttributeTok}[1]{\textcolor[rgb]{0.77,0.63,0.00}{#1}}
+\newcommand{\BaseNTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\BuiltInTok}[1]{#1}
+\newcommand{\CharTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\CommentTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textit{#1}}}
+\newcommand{\CommentVarTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\ConstantTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\ControlFlowTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{\textbf{#1}}}
+\newcommand{\DataTypeTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{#1}}
+\newcommand{\DecValTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\DocumentationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\ErrorTok}[1]{\textcolor[rgb]{0.64,0.00,0.00}{\textbf{#1}}}
+\newcommand{\ExtensionTok}[1]{#1}
+\newcommand{\FloatTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\FunctionTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\ImportTok}[1]{#1}
+\newcommand{\InformationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\KeywordTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{\textbf{#1}}}
+\newcommand{\NormalTok}[1]{#1}
+\newcommand{\OperatorTok}[1]{\textcolor[rgb]{0.81,0.36,0.00}{\textbf{#1}}}
+\newcommand{\OtherTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{#1}}
+\newcommand{\PreprocessorTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textit{#1}}}
+\newcommand{\RegionMarkerTok}[1]{#1}
+\newcommand{\SpecialCharTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\SpecialStringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\StringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\VariableTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\VerbatimStringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\WarningTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\usepackage{graphicx}
+\makeatletter
+\def\maxwidth{\ifdim\Gin@nat@width>\linewidth\linewidth\else\Gin@nat@width\fi}
+\def\maxheight{\ifdim\Gin@nat@height>\textheight\textheight\else\Gin@nat@height\fi}
+\makeatother
+% Scale images if necessary, so that they will not overflow the page
+% margins by default, and it is still possible to overwrite the defaults
+% using explicit options in \includegraphics[width, height, ...]{}
+\setkeys{Gin}{width=\maxwidth,height=\maxheight,keepaspectratio}
+% Set default figure placement to htbp
+\makeatletter
+\def\fps@figure{htbp}
+\makeatother
+\setlength{\emergencystretch}{3em} % prevent overfull lines
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+\setcounter{secnumdepth}{-\maxdimen} % remove section numbering
+\usepackage{booktabs}
+\ifLuaTeX
+  \usepackage{selnolig}  % disable illegal ligatures
+\fi
+\IfFileExists{bookmark.sty}{\usepackage{bookmark}}{\usepackage{hyperref}}
+\IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
+\urlstyle{same} % disable monospaced font for URLs
+\hypersetup{
+  pdftitle={Making Regression Tables},
+  pdfauthor={Boyie Chen},
+  hidelinks,
+  pdfcreator={LaTeX via pandoc}}
+
+\title{Making Regression Tables}
+\author{Boyie Chen}
+\date{2023-03-19}
+
+\begin{document}
+\maketitle
+
+\hypertarget{r-markdown}{%
+\subsection{R Markdown}\label{r-markdown}}
+
+This is an R Markdown document. Markdown is a simple formatting syntax
+for authoring HTML, PDF, and MS Word documents. For more details on
+using R Markdown see \url{http://rmarkdown.rstudio.com}.
+
+When you click the \textbf{Knit} button a document will be generated
+that includes both content as well as the output of any embedded R code
+chunks within the document. You can embed an R code chunk like this:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{set.seed}\NormalTok{(}\DecValTok{1234}\NormalTok{)}
+\NormalTok{data }\OtherTok{\textless{}{-}} \FunctionTok{data.frame}\NormalTok{(}\AttributeTok{resource\_dep =} \FunctionTok{random\_sampler}\NormalTok{(),}
+                   \AttributeTok{autocracy =} \FunctionTok{random\_sampler}\NormalTok{(),}
+                   \AttributeTok{env\_nar =} \FunctionTok{random\_sampler}\NormalTok{(),}
+                   \AttributeTok{hr\_nar =} \FunctionTok{random\_sampler}\NormalTok{(),}
+                   \AttributeTok{international =} \FunctionTok{random\_sampler}\NormalTok{(),}
+                   \AttributeTok{year =} \FunctionTok{sample}\NormalTok{(}\DecValTok{2008}\SpecialCharTok{:}\DecValTok{2022}\NormalTok{, }\AttributeTok{size =}\NormalTok{ n, }\AttributeTok{replace =}\NormalTok{ T),}
+                   \AttributeTok{permno =} \FunctionTok{sample}\NormalTok{(}\DecValTok{1}\SpecialCharTok{:}\DecValTok{50}\NormalTok{, }\AttributeTok{size =}\NormalTok{ n, }\AttributeTok{replace =}\NormalTok{ T)}
+\NormalTok{                   )}
+\FunctionTok{summary}\NormalTok{(data)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##   resource_dep      autocracy          env_nar            hr_nar      
+##  Min.   :-5.875   Min.   :-3.3762   Min.   :-1.8006   Min.   :-3.410  
+##  1st Qu.:-4.267   1st Qu.:-1.1648   1st Qu.: 0.1640   1st Qu.:-2.561  
+##  Median :-3.890   Median :-0.4694   Median : 0.7554   Median :-2.333  
+##  Mean   :-3.886   Mean   :-0.5030   Mean   : 0.7297   Mean   :-2.323  
+##  3rd Qu.:-3.510   3rd Qu.: 0.1357   3rd Qu.: 1.2773   3rd Qu.:-2.066  
+##  Max.   :-1.874   Max.   : 2.3167   Max.   : 3.0974   Max.   :-1.297  
+##  NA's   :97       NA's   :85        NA's   :83        NA's   :75      
+##  international          year          permno     
+##  Min.   :-3.3032   Min.   :2008   Min.   : 1.00  
+##  1st Qu.:-2.1965   1st Qu.:2012   1st Qu.:14.00  
+##  Median :-1.9201   Median :2016   Median :27.00  
+##  Mean   :-1.9218   Mean   :2015   Mean   :26.48  
+##  3rd Qu.:-1.6407   3rd Qu.:2019   3rd Qu.:40.00  
+##  Max.   :-0.5181   Max.   :2022   Max.   :50.00  
+##  NA's   :85
+\end{verbatim}
+
+\hypertarget{running-regressions}{%
+\subsection{Running Regressions}\label{running-regressions}}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{reg1 }\OtherTok{\textless{}{-}} \FunctionTok{feols}\NormalTok{(env\_nar }\SpecialCharTok{\textasciitilde{}}\NormalTok{ resource\_dep }\SpecialCharTok{+}\NormalTok{ autocracy }\SpecialCharTok{+}\NormalTok{ international }\SpecialCharTok{|}\NormalTok{ year }\SpecialCharTok{+}\NormalTok{ permno, }
+              \AttributeTok{data =}\NormalTok{ data)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## NOTE: 307 observations removed because of NA values (LHS: 83, RHS: 245).
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{reg2 }\OtherTok{\textless{}{-}} \FunctionTok{feols}\NormalTok{(hr\_nar }\SpecialCharTok{\textasciitilde{}}\NormalTok{ resource\_dep }\SpecialCharTok{+}\NormalTok{ autocracy }\SpecialCharTok{+}\NormalTok{ international }\SpecialCharTok{|}\NormalTok{ year }\SpecialCharTok{+}\NormalTok{ permno, }
+              \AttributeTok{data =}\NormalTok{ data)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## NOTE: 308 observations removed because of NA values (LHS: 75, RHS: 245).
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{reg3 }\OtherTok{\textless{}{-}} \FunctionTok{feols}\NormalTok{(env\_nar }\SpecialCharTok{\textasciitilde{}}\NormalTok{ resource\_dep }\SpecialCharTok{+}\NormalTok{ autocracy }\SpecialCharTok{+}\NormalTok{ international }
+              \SpecialCharTok{+}\NormalTok{ resource\_dep}\SpecialCharTok{*}\NormalTok{international }\SpecialCharTok{+}\NormalTok{ autocracy}\SpecialCharTok{*}\NormalTok{international }\SpecialCharTok{|}\NormalTok{ year }\SpecialCharTok{+}\NormalTok{ permno, }
+              \AttributeTok{data =}\NormalTok{ data)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## NOTE: 307 observations removed because of NA values (LHS: 83, RHS: 245).
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{reg4 }\OtherTok{\textless{}{-}} \FunctionTok{feols}\NormalTok{(hr\_nar }\SpecialCharTok{\textasciitilde{}}\NormalTok{ resource\_dep }\SpecialCharTok{+}\NormalTok{ autocracy }\SpecialCharTok{+}\NormalTok{ international }
+              \SpecialCharTok{+}\NormalTok{ resource\_dep}\SpecialCharTok{*}\NormalTok{international }\SpecialCharTok{+}\NormalTok{ autocracy}\SpecialCharTok{*}\NormalTok{international }\SpecialCharTok{|}\NormalTok{ year }\SpecialCharTok{+}\NormalTok{ permno, }
+              \AttributeTok{data =}\NormalTok{ data)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## NOTE: 308 observations removed because of NA values (LHS: 75, RHS: 245).
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{etable}\NormalTok{(reg1, reg2, reg3, reg4)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##                                          reg1             reg2             reg3
+## Dependent Var.:                       env_nar           hr_nar          env_nar
+##                                                                                
+## resource_dep                 -0.0469 (0.0712) -0.0326 (0.0285) -0.1627 (0.2693)
+## autocracy                     0.0473 (0.0321) 0.0278* (0.0116) -0.0357 (0.1496)
+## international                -0.0427 (0.0614) -0.0331 (0.0237) -0.3007 (0.5387)
+## resource_dep x international                                   -0.0602 (0.1363)
+## autocracy x international                                      -0.0427 (0.0777)
+## Fixed-Effects:               ---------------- ---------------- ----------------
+## year                                      Yes              Yes              Yes
+## permno                                    Yes              Yes              Yes
+## ____________________________ ________________ ________________ ________________
+## S.E.: Clustered                      by: year         by: year         by: year
+## Observations                              693              692              693
+## R2                                    0.09263          0.10029          0.09337
+## Within R2                             0.00485          0.00879          0.00567
+## 
+##                                          reg4
+## Dependent Var.:                        hr_nar
+##                                              
+## resource_dep                 -0.1078 (0.0918)
+## autocracy                    -0.0583 (0.0630)
+## international                -0.2079 (0.1620)
+## resource_dep x international -0.0389 (0.0442)
+## autocracy x international    -0.0445 (0.0318)
+## Fixed-Effects:               ----------------
+## year                                      Yes
+## permno                                    Yes
+## ____________________________ ________________
+## S.E.: Clustered                      by: year
+## Observations                              692
+## R2                                    0.10298
+## Within R2                             0.01175
+## ---
+## Signif. codes: 0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+\end{verbatim}
+
+And we can put the displayed names in a named vector.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{keyvalues }\OtherTok{=} \FunctionTok{c}\NormalTok{(}\StringTok{"resource\_dep"}\OtherTok{=}\StringTok{"Home resource dependency"}\NormalTok{,}
+              \StringTok{"autocracy"} \OtherTok{=} \StringTok{"Home autocracy"}\NormalTok{,}
+              \StringTok{"env\_nar"} \OtherTok{=} \StringTok{"Env. Nar."}\NormalTok{,}
+              \StringTok{"hr\_nar"} \OtherTok{=} \StringTok{"HR Nar."}\NormalTok{,}
+              \StringTok{"international"} \OtherTok{=} \StringTok{"internationalization"}
+\NormalTok{              )}
+
+\FunctionTok{etable}\NormalTok{(reg1, reg2, reg3, reg4, }\AttributeTok{dict =}\NormalTok{ keyvalues)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##                                                             reg1
+## Dependent Var.:                                        Env. Nar.
+##                                                                 
+## Home resource dependency                        -0.0469 (0.0712)
+## Home autocracy                                   0.0473 (0.0321)
+## internationalization                            -0.0427 (0.0614)
+## Home resource dependency x internationalization                 
+## Home autocracy x internationalization                           
+## Fixed-Effects:                                  ----------------
+## year                                                         Yes
+## permno                                                       Yes
+## ________________________________________        ________________
+## S.E.: Clustered                                         by: year
+## Observations                                                 693
+## R2                                                       0.09263
+## Within R2                                                0.00485
+## 
+##                                                             reg2
+## Dependent Var.:                                          HR Nar.
+##                                                                 
+## Home resource dependency                        -0.0326 (0.0285)
+## Home autocracy                                  0.0278* (0.0116)
+## internationalization                            -0.0331 (0.0237)
+## Home resource dependency x internationalization                 
+## Home autocracy x internationalization                           
+## Fixed-Effects:                                  ----------------
+## year                                                         Yes
+## permno                                                       Yes
+## ________________________________________        ________________
+## S.E.: Clustered                                         by: year
+## Observations                                                 692
+## R2                                                       0.10029
+## Within R2                                                0.00879
+## 
+##                                                             reg3
+## Dependent Var.:                                        Env. Nar.
+##                                                                 
+## Home resource dependency                        -0.1627 (0.2693)
+## Home autocracy                                  -0.0357 (0.1496)
+## internationalization                            -0.3007 (0.5387)
+## Home resource dependency x internationalization -0.0602 (0.1363)
+## Home autocracy x internationalization           -0.0427 (0.0777)
+## Fixed-Effects:                                  ----------------
+## year                                                         Yes
+## permno                                                       Yes
+## ________________________________________        ________________
+## S.E.: Clustered                                         by: year
+## Observations                                                 693
+## R2                                                       0.09337
+## Within R2                                                0.00567
+## 
+##                                                             reg4
+## Dependent Var.:                                          HR Nar.
+##                                                                 
+## Home resource dependency                        -0.1078 (0.0918)
+## Home autocracy                                  -0.0583 (0.0630)
+## internationalization                            -0.2079 (0.1620)
+## Home resource dependency x internationalization -0.0389 (0.0442)
+## Home autocracy x internationalization           -0.0445 (0.0318)
+## Fixed-Effects:                                  ----------------
+## year                                                         Yes
+## permno                                                       Yes
+## ________________________________________        ________________
+## S.E.: Clustered                                         by: year
+## Observations                                                 692
+## R2                                                       0.10298
+## Within R2                                                0.01175
+## ---
+## Signif. codes: 0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+\end{verbatim}
+
+Furthermore, we can render the \LaTeX table
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{etable}\NormalTok{(reg1, reg2, reg3, reg4,}
+       \AttributeTok{tex =}\NormalTok{ T,}
+       \AttributeTok{dict =}\NormalTok{ keyvalues,}
+       \AttributeTok{style.tex =} \FunctionTok{style.tex}\NormalTok{(}\StringTok{"aer"}\NormalTok{),}
+       \AttributeTok{fitstat =} \SpecialCharTok{\textasciitilde{}}\NormalTok{ r2 }\SpecialCharTok{+}\NormalTok{ n)}
+\end{Highlighting}
+\end{Shaded}
+
+\begingroup
+\centering
+\begin{tabular}{lcccc}
+   \toprule
+                                                           & Env. Nar.     & HR Nar.       & Env. Nar.     & HR Nar.\\  
+                                                           & (1)           & (2)           & (3)           & (4)\\  
+   \midrule 
+   Home resource dependency                                & -0.0469       & -0.0326       & -0.1627       & -0.1078\\   
+                                                           & (0.0712)      & (0.0285)      & (0.2693)      & (0.0918)\\   
+   Home autocracy                                          & 0.0473        & 0.0278$^{**}$ & -0.0357       & -0.0583\\   
+                                                           & (0.0321)      & (0.0116)      & (0.1496)      & (0.0630)\\   
+   internationalization                                    & -0.0427       & -0.0331       & -0.3007       & -0.2079\\   
+                                                           & (0.0614)      & (0.0237)      & (0.5387)      & (0.1620)\\   
+   Home resource dependency $\times$ internationalization  &               &               & -0.0602       & -0.0389\\   
+                                                           &               &               & (0.1363)      & (0.0442)\\   
+   Home autocracy $\times$ internationalization            &               &               & -0.0427       & -0.0445\\   
+                                                           &               &               & (0.0777)      & (0.0318)\\   
+    \\
+   R$^2$                                                   & 0.09263       & 0.10029       & 0.09337       & 0.10298\\  
+   Observations                                            & 693           & 692           & 693           & 692\\  
+    \\
+   year fixed effects                                      & $\checkmark$  & $\checkmark$  & $\checkmark$  & $\checkmark$\\   
+   permno fixed effects                                    & $\checkmark$  & $\checkmark$  & $\checkmark$  & $\checkmark$\\   
+   \bottomrule
+\end{tabular}
+\par\endgroup
+
+\end{document}

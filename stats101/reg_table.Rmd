@@ -1,0 +1,90 @@
+---
+title: "Making Regression Tables"
+author: "Boyie Chen"
+date: "2023-03-19"
+output:
+  pdf_document: 
+    extra_dependencies: ["booktabs"]
+    keep_tex: TRUE
+  html_document: default
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+
+library(fixest)
+library(dplyr)
+
+n <- 1000
+
+random_sampler <- function(n = 1000) {
+  mu <- runif(1, -5, 5)
+  sd <- runif(1, 0, 1)
+  res <- rnorm(n, mean = mu, sd = sd)
+  res <- sample(c(res, rep(NA, n/10)), size = n, replace = T)
+  return(res)
+}
+
+```
+
+## R Markdown
+
+This is an R Markdown document. Markdown is a simple formatting syntax for authoring HTML, PDF, and MS Word documents. For more details on using R Markdown see <http://rmarkdown.rstudio.com>.
+
+When you click the **Knit** button a document will be generated that includes both content as well as the output of any embedded R code chunks within the document. You can embed an R code chunk like this:
+
+# Pseudo data
+
+```{r cars}
+set.seed(1234)
+data <- data.frame(resource_dep = random_sampler(),
+                   autocracy = random_sampler(),
+                   env_nar = random_sampler(),
+                   hr_nar = random_sampler(),
+                   international = random_sampler(),
+                   year = sample(2008:2022, size = n, replace = T),
+                   permno = sample(1:50, size = n, replace = T)
+                   )
+summary(data)
+```
+
+## Running Regressions 
+
+```{r, echo=TRUE}
+reg1 <- feols(env_nar ~ resource_dep + autocracy + international | year + permno, 
+              data = data)
+reg2 <- feols(hr_nar ~ resource_dep + autocracy + international | year + permno, 
+              data = data)
+reg3 <- feols(env_nar ~ resource_dep + autocracy + international 
+              + resource_dep*international + autocracy*international | year + permno, 
+              data = data)
+reg4 <- feols(hr_nar ~ resource_dep + autocracy + international 
+              + resource_dep*international + autocracy*international | year + permno, 
+              data = data)
+
+
+etable(reg1, reg2, reg3, reg4)
+
+```
+
+And we can put the displayed names in a named vector.
+
+```{r}
+keyvalues = c("resource_dep"="Home resource dependency",
+              "autocracy" = "Home autocracy",
+              "env_nar" = "Env. Nar.",
+              "hr_nar" = "HR Nar.",
+              "international" = "internationalization"
+              )
+
+etable(reg1, reg2, reg3, reg4, dict = keyvalues)
+```
+
+Furthermore, we can render the \LaTeX table
+```{r results='asis'}
+etable(reg1, reg2, reg3, reg4,
+       tex = T,
+       dict = keyvalues,
+       style.tex = style.tex("aer"),
+       fitstat = ~ r2 + n)
+```
