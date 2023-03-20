@@ -25,12 +25,17 @@ data <- data.frame(resource_dep = random_sampler(),
                    permno = sample(1:50, size = n, replace = T)
                    )
 
+data <- data %>% 
+  arrange(permno, year) 
+  
 # run regression
 
 reg1 <- feols(env_nar ~ resource_dep + autocracy + international | year + permno, 
               data = data)
 reg2 <- feols(hr_nar ~ resource_dep + autocracy + international | year + permno, 
               data = data)
+
+# fixed effect ordinary least square
 reg3 <- feols(env_nar ~ resource_dep + autocracy + international 
               + resource_dep*international + autocracy*international | year + permno, 
               data = data)

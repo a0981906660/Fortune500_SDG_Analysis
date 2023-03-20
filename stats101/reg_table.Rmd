@@ -9,7 +9,7 @@ output:
   html_document: default
 ---
 
-```{r setup, include=FALSE}
+```{r setup, include=TRUE}
 knitr::opts_chunk$set(echo = TRUE)
 
 library(fixest)
@@ -24,6 +24,8 @@ random_sampler <- function(n = 1000) {
   res <- sample(c(res, rep(NA, n/10)), size = n, replace = T)
   return(res)
 }
+
+random_sampler(100)
 
 ```
 

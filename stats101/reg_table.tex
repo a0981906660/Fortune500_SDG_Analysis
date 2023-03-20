@@ -111,6 +111,66 @@
 \begin{document}
 \maketitle
 
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{knitr}\SpecialCharTok{::}\NormalTok{opts\_chunk}\SpecialCharTok{$}\FunctionTok{set}\NormalTok{(}\AttributeTok{echo =} \ConstantTok{TRUE}\NormalTok{)}
+
+\FunctionTok{library}\NormalTok{(fixest)}
+\FunctionTok{library}\NormalTok{(dplyr)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## 
+## Attaching package: 'dplyr'
+\end{verbatim}
+
+\begin{verbatim}
+## The following objects are masked from 'package:stats':
+## 
+##     filter, lag
+\end{verbatim}
+
+\begin{verbatim}
+## The following objects are masked from 'package:base':
+## 
+##     intersect, setdiff, setequal, union
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{n }\OtherTok{\textless{}{-}} \DecValTok{1000}
+
+\NormalTok{random\_sampler }\OtherTok{\textless{}{-}} \ControlFlowTok{function}\NormalTok{(}\AttributeTok{n =} \DecValTok{1000}\NormalTok{) \{}
+\NormalTok{  mu }\OtherTok{\textless{}{-}} \FunctionTok{runif}\NormalTok{(}\DecValTok{1}\NormalTok{, }\SpecialCharTok{{-}}\DecValTok{5}\NormalTok{, }\DecValTok{5}\NormalTok{)}
+\NormalTok{  sd }\OtherTok{\textless{}{-}} \FunctionTok{runif}\NormalTok{(}\DecValTok{1}\NormalTok{, }\DecValTok{0}\NormalTok{, }\DecValTok{1}\NormalTok{)}
+\NormalTok{  res }\OtherTok{\textless{}{-}} \FunctionTok{rnorm}\NormalTok{(n, }\AttributeTok{mean =}\NormalTok{ mu, }\AttributeTok{sd =}\NormalTok{ sd)}
+\NormalTok{  res }\OtherTok{\textless{}{-}} \FunctionTok{sample}\NormalTok{(}\FunctionTok{c}\NormalTok{(res, }\FunctionTok{rep}\NormalTok{(}\ConstantTok{NA}\NormalTok{, n}\SpecialCharTok{/}\DecValTok{10}\NormalTok{)), }\AttributeTok{size =}\NormalTok{ n, }\AttributeTok{replace =}\NormalTok{ T)}
+  \FunctionTok{return}\NormalTok{(res)}
+\NormalTok{\}}
+
+\FunctionTok{random\_sampler}\NormalTok{(}\DecValTok{100}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##   [1] 0.4478997 0.4540419 0.4992207 0.5086479 0.4079895 0.4692788 0.4243046
+##   [8] 0.4286912 0.3951827        NA 0.4558117 0.4243046 0.4333201        NA
+##  [15] 0.4536906 0.4766272 0.4370514 0.4222826 0.4449085 0.5201547 0.4557501
+##  [22]        NA        NA 0.4478997 0.4221694 0.3774258 0.4069314 0.4109434
+##  [29] 0.4558117        NA 0.4887557 0.4186661 0.4378328 0.3818224 0.4558231
+##  [36] 0.4712371 0.3704236 0.4716817 0.4272570 0.4694758 0.4692788 0.4360541
+##  [43] 0.4122176 0.4079521 0.4764073        NA 0.4282448 0.3860932        NA
+##  [50] 0.3818224 0.4096304 0.4557501 0.3860932 0.4256579 0.3951827        NA
+##  [57] 0.4221694 0.4243046 0.4069314 0.4326128 0.4243046 0.3818224 0.4196082
+##  [64] 0.4363263 0.4282448 0.4846517 0.4449085 0.4593610 0.4716817 0.4558117
+##  [71] 0.4378328 0.4558231 0.4284910 0.4614314 0.4256579 0.4222826 0.4714311
+##  [78] 0.3860932 0.4540419 0.5086479 0.4378328 0.3774258 0.4196082 0.4400873
+##  [85] 0.4540076 0.4222826 0.4349402 0.4122176 0.4203355 0.4093189 0.3774258
+##  [92] 0.4256579 0.4193025 0.4558117 0.3951827 0.4473817 0.4318975 0.4326128
+##  [99] 0.4075613 0.4186661
+\end{verbatim}
+
 \hypertarget{r-markdown}{%
 \subsection{R Markdown}\label{r-markdown}}
 
@@ -121,6 +181,9 @@ using R Markdown see \url{http://rmarkdown.rstudio.com}.
 When you click the \textbf{Knit} button a document will be generated
 that includes both content as well as the output of any embedded R code
 chunks within the document. You can embed an R code chunk like this:
+
+\hypertarget{pseudo-data}{%
+\section{Pseudo data}\label{pseudo-data}}
 
 \begin{Shaded}
 \begin{Highlighting}[]
