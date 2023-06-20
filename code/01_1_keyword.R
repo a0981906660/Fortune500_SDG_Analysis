@@ -5,6 +5,7 @@ library(readxl)
 library(hash)
 
 # Setup working directory
+setwd("F:/Fortune500_SDG_Analysis")
 getwd()
 
 # Load keyword dictionary
@@ -18,20 +19,20 @@ df_keyword_unnest <- df_keyword %>%
   bind_rows(df_keyword %>% 
               select(word2, sdg) %>% 
               drop_na() %>% 
-              rename(word = word2)
+              rename(word = word2) #需要了解rename function
             ) %>% 
   # sort the rows in SDG order
   mutate(SDG_order = str_extract(sdg, pattern = "\\d+"),
          SDG_order = as.numeric(SDG_order),
          ) %>% 
   arrange(SDG_order) %>% 
-  select(-SDG_order) %>% 
+  select(-SDG_order) %>%
   # trim white spaces at both sides
   mutate(word = str_trim(word, side = "both")) %>% 
   # add regular expressions
   mutate(word = str_replace_all(word, "\\*", ".?")) %>%
-  mutate(word = str_replace_all(word, " AND ", ".*?")) %>% #舉例 Economic Resource AND Access 在一個句子裡面同時出現，不一定要前後
-  mutate(word = str_split(word, "; ")) %>% #把excel 裡面同一格有 分號; 的分開到不同row 如row 101
+  mutate(word = str_replace_all(word, " AND ", ".*?")) %>% #舉例 Economic Resource AND Access 在一個句子裡面同時出現
+  mutate(word = str_split(word, "; ")) %>% #把excel 裡面同一格有 分號; 的分開到不同row 如row 101，不一定要前後
   unnest(c(word)) %>% 
   distinct() %>% 
   mutate(ID = row_number())
@@ -41,6 +42,7 @@ df_keyword_nspace <- df_keyword_unnest %>%
   filter(!str_detect(word, " ")) %>% 
   mutate(lll = str_length(word), lll_b = str_count(word, "[A-Z]")) %>%
   mutate(word = if_else(lll > lll_b, str_to_lower(word), word))
+
 # Create a dataframe of keywords with spaces
 df_keyword_space <- df_keyword_unnest %>% 
   filter(str_detect(word," ")) %>%
