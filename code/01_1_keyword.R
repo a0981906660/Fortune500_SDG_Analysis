@@ -31,7 +31,8 @@ df_keyword_unnest <- df_keyword %>%
   mutate(word = str_trim(word, side = "both")) %>% 
   # add regular expressions
   mutate(word = str_replace_all(word, "\\*", ".?")) %>%
-  mutate(word = str_replace_all(word, " AND ", ".*?")) %>% #舉例 Economic Resource AND Access 在一個句子裡面同時出現
+  mutate(word = str_replace_all(word, " AND ", ".*?")) %>% 
+  #舉例 Economic Resource AND Access 在一個句子裡面同時出現 可在df_key_final 看
   mutate(word = str_split(word, "; ")) %>% #把excel 裡面同一格有 分號; 的分開到不同row 如row 101，不一定要前後
   unnest(c(word)) %>% 
   distinct() %>% 
@@ -117,3 +118,4 @@ df_final_key <- df_final_key %>%
 # Save file
 df_final_key %>% 
   write_rds("./data/cleaned_data/df_final_key.rds")
+
