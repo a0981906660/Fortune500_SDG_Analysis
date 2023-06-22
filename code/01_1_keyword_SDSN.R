@@ -39,10 +39,22 @@ df_keyword_unnest <- df_keyword %>%
   mutate(ID = row_number())
 
 # Create a dataframe of keywords without spaces -> nspace
-df_keyword_nspace <- df_keyword_unnest %>% 
+# df_keyword_nspace <- df_keyword_unnest %>% 
+#  filter(!str_detect(word, " ")) %>% 
+#  mutate(lll = str_length(word), lll_b = str_count(word, "[A-Z]")) %>%
+#  mutate(word = if_else(lll > lll_b, str_to_lower(word), word))
+# the above few lines are modified as followed
+
+#---------------------------------------------------------------------------------
+# helen's modification for identifing the last characteristic being "s" (lower case)
+df_keyword_nspaceChat <- df_keyword_unnest %>% 
   filter(!str_detect(word, " ")) %>% 
-  mutate(lll = str_length(word), lll_b = str_count(word, "[A-Z]")) %>%
-  mutate(word = if_else(lll > lll_b, str_to_lower(word), word))
+  mutate(lll = str_length(word),
+         lll_b = str_count(word, "[A-Z]"),
+         minus = lll-lll_b,
+         ends_with_s = str_detect(word, "s$")) %>%
+  mutate(word = if_else(lll > lll_b & ! minus=="1", str_to_lower(word), word))
+#---------------------------------------------------------------------------------
 
 # Create a dataframe of keywords with spaces
 df_keyword_space <- df_keyword_unnest %>% 
