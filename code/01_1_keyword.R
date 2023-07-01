@@ -98,3 +98,6 @@ process_keywords <- function(keyword_file) {
 df_all <- process_keywords("./data/raw_data/keyword/Keyword_all.csv")
 df_SDSN <- process_keywords("./data/raw_data/keyword/Keyword_SDSN.csv")
 
+df_all %>% write_rds("./data/cleaned_data/df_final_key_all.rds")
+df_SDSN %>% write_rds("./data/cleaned_data/df_final_key_SDSN.rds")
+
