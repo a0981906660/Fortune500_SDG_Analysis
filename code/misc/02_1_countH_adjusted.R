@@ -4,7 +4,7 @@ library(tidyverse)
 library(tidytext)
 library(stringi)
 library(fs)
-setwd("F:/Fortune500_SDG_Analysis")
+# setwd("F:/Fortune500_SDG_Analysis")
 source("./code/utils/func.R")
 
 # Load data
