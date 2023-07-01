@@ -5,7 +5,6 @@ library(tidytext)
 library(stringi)
 library(fs)
 
-#source("./code/utils/func.R")
 source("./code/utils/func.R", encoding = '')
 
 # Load data
