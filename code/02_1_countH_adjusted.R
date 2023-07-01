@@ -1,11 +1,12 @@
-# rm(list = ls())
+rm(list = ls())
 rm(list = setdiff(ls(), c("NAICS2_CODE", "NAICS2_CODES", "timeSpent", "t0", "t1")))
 library(tidyverse)
 library(tidytext)
 library(stringi)
 library(fs)
-setwd("F:/Fortune500_SDG_Analysis")
-source("./code/utils/func.R")
+
+#source("./code/utils/func.R")
+source("./code/utils/func.R", encoding = '')
 
 # Load data
 df_final_key <- read_rds("./data/cleaned_data/df_final_key.rds")
