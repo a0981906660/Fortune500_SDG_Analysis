@@ -52,6 +52,7 @@ for (txtfile in unique(df_sentence$name)) {
     
     n_keyword <- df_sentence %>% 
       filter(name == txtfile) %>% 
+      mutate(text = tolower(text)) %>% 
       pull(text) %>% 
       map_dbl(~stringi::stri_count(., regex = keyword)) %>% 
       sum(.)

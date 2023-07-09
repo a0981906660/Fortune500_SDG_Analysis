@@ -19,6 +19,7 @@ countWords <- function(splited_data) {
     counter <- counter + 1
     cat(">>> Progress: ", round(counter/counter_end, 4)*100, "%", "\n>>> Company : ", name, "\n") 
     n_keyword <- splited_data %>% 
+      mutate(text = tolower(text)) %>% 
       pull(text) %>% 
       map_dbl(~stringi::stri_count(., regex = keyword)) %>% 
       sum(.)
@@ -98,3 +99,9 @@ path_name <- paste0("./data/cleaned_data/df_wordCount_NAICS", NAICS2_CODE, ".rds
 res %>% write_rds(path_name)
 
 parallel::stopCluster(cl)
+
+
+
+
+
+

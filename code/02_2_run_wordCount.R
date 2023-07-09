@@ -2,8 +2,8 @@
 
 rm(list = ls())
 
-# NAICS2_CODES <- c(21, 31, 33)
-NAICS2_CODES <- c(33)
+NAICS2_CODES <- c(21, 31, 33)
+# NAICS2_CODES <- c(33)
 
 timeSpent <- c()
 for (NAICS2_CODE in NAICS2_CODES) {
