@@ -45,10 +45,13 @@ process_keywords <- function(keyword_file) {
   df_keynspace_SDSN <- df_keyunnest_SDSN %>%
    filter(!str_detect(word, " ")) %>%
    mutate(lll = str_length(word),
-          lll_b = str_count(word, "[A-Z]+(s?)"),
+          lll_b = str_count(word, "[A-Z](s?)"),
           ends_with_s = str_detect(word, "s$"),
           minus = lll-lll_b,) %>%
-          mutate(word = if_else(lll > lll_b & !minus=="1", str_to_lower(word), word)) 
+          mutate(word = if_else(lll > lll_b & !minus=="1", str_to_lower(word), word)) %>%
+   # convert all the keywords into lower-case
+   mutate(word = tolower(word))
+  
   
   # Create a dataframe of keywords with spaces
   df_keyspace_SDSN <- df_keyunnest_SDSN %>% 
