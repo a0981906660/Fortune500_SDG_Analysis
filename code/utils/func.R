@@ -33,7 +33,7 @@ readReports <- function(NAICS2_CODE) {
   # read in files
   txt_files <- fs::dir_ls("./data/raw_data/Fortune_500_report/", 
                           # recurse means 遞歸, 會進入一層層子資料夾內取得所有檔案的路徑
-                          recurse = TRUE, regexp = "\\.txt")
+                          recurse = TRUE, regexp = "\\.txt|\\.htm")
   # make the above vector of paths as a dataframe
   df.txt <- bind_cols(
     path = txt_files) %>% 
