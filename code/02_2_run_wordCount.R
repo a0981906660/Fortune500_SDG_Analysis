@@ -14,3 +14,4 @@ for (NAICS2_CODE in NAICS2_CODES) {
   timeSpent <- c(timeSpent, t_end - t0)
   cat(">>> Time used: ", format(t_end - t0), "\n")
 }
+
