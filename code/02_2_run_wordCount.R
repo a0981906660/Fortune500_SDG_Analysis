@@ -13,5 +13,8 @@ for (NAICS2_CODE in NAICS2_CODES) {
   t_end <- Sys.time()
   timeSpent <- c(timeSpent, t_end - t0)
   cat(">>> Time used: ", format(t_end - t0), "\n")
+  # NAICS2 21; Time used:  21.80071 hours
+  # NAICS2 31; Time used:  6.595993 hours
+  # NAICS2 33; Time used:  6.782853 hours
 }
 
