@@ -7,7 +7,7 @@ library(fs)
 library(foreach)
 library(doParallel)
 library(furrr)
-source("./code/utils/func.R")
+source("./code/utils/func.R", encoding = '')
 
 # define function used in parallel computing
 countWords <- function(splited_data) {

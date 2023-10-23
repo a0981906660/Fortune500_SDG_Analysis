@@ -14,7 +14,7 @@ library(readr)
 library(stringr)
 
 # Load data
-df <- read_rds("./data/cleaned_data/df_wordCount_NAICS31.rds")
+df <- read_rds("./data/cleaned_data/df_wordCount_NAICS21.rds")
 df_final_key <- read_rds("./data/cleaned_data/df_final_key.rds")
 
 str(df); class(df)
@@ -62,9 +62,10 @@ df.plot <- df %>%
 ## Pick a company
 ## TODO: input a company's rank
 AVAILABLE_COMPANIES <- df %>% select(name, rank) %>% distinct()
-company_rank <- 370
+company_rank <- 273
 company_name <- AVAILABLE_COMPANIES %>% filter(rank == company_rank) %>% pull(name)
 
+# df.plot可以看每個sdg 次數及ratio
 p1 <- df.plot %>% 
   filter(rank == company_rank) %>% 
   ggplot(aes(x = year, y = ratio, color = sdg)) +
@@ -80,3 +81,4 @@ p1 %>%
          dpi = 300, 
          units = "in",
          height = 12, width = 12)
+

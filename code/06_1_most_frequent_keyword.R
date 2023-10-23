@@ -11,7 +11,8 @@ library(stringr)
 library(kableExtra)
 
 findMostFreqKeyword <- function(NAICS_Code2) {
-  # Load data based on NAICS code
+  # Load data based on NAICS code 
+  # 可以在console 打NAICS_Code2 <- 21 (或其他產業)後看df.wordCount
   df.wordCount <- read_rds(paste0("./data/cleaned_data/df_wordCount_NAICS", NAICS_Code2, ".rds"))
   df_final_key <- read_rds("./data/cleaned_data/df_final_key.rds")
   
@@ -68,3 +69,4 @@ df.table %>%
   kbl(caption = "test", booktabs = T, format = 'latex') %>% 
   # kable_styling(latex_options = c("striped", "hold_position")) %>% 
   save_kable(file = './data/result/tab_keyword_frequency.tex')
+
