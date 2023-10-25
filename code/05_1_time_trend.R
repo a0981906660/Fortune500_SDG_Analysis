@@ -12,6 +12,7 @@ library(dplyr)
 library(ggplot2)
 library(readr)
 library(stringr)
+library(forcats)
 
 # Load data
 df <- read_rds("./data/cleaned_data/df_wordCount_NAICS21.rds")

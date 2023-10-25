@@ -8,6 +8,7 @@ data/raw_data/Fortune_500_report/*
 # History files
 .Rhistory
 .Rapp.history
+.DS_Store
 
 # Session Data files
 .RData
