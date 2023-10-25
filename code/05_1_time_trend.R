@@ -71,6 +71,7 @@ p1 <- df.plot %>%
   filter(rank == company_rank) %>% 
   ggplot(aes(x = year, y = ratio, color = sdg)) +
   geom_line()+
+  ggtitle(company_name)+
   labs(x = "year", y = "percentage")
 
 p1
@@ -78,6 +79,14 @@ p1
 ## Save plot
 p1 %>% 
   ggsave(filename = paste0("./data/result/fig_timetrend_across_SDGcate_", company_name, ".png"), 
+         device = "png",
+         dpi = 300, 
+         units = "in",
+         height = 12, width = 12)
+
+## Save plot that is not managed by git
+p1 %>% 
+  ggsave(filename = paste0("./data/result/ignored/fig_timetrend_across_SDGcate_", company_name, ".png"), 
          device = "png",
          dpi = 300, 
          units = "in",
