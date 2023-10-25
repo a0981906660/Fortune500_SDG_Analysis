@@ -63,7 +63,7 @@ df.plot <- df %>%
 ## Pick a company
 ## TODO: input a company's rank
 AVAILABLE_COMPANIES <- df %>% select(name, rank) %>% distinct()
-company_rank <- 273
+company_rank <- 84
 company_name <- AVAILABLE_COMPANIES %>% filter(rank == company_rank) %>% pull(name)
 
 # df.plot可以看每個sdg 次數及ratio
@@ -77,16 +77,16 @@ p1 <- df.plot %>%
 p1
 
 ## Save plot
-p1 %>% 
-  ggsave(filename = paste0("./data/result/fig_timetrend_across_SDGcate_", company_name, ".png"), 
-         device = "png",
-         dpi = 300, 
-         units = "in",
-         height = 12, width = 12)
+#p1 %>% 
+  #ggsave(filename = paste0("./data/result/fig_timetrend_across_SDGcate_", company_name, ".png"), 
+        # device = "png",
+         #dpi = 300, 
+        # units = "in",
+        # height = 12, width = 12)
 
 ## Save plot that is not managed by git
 p1 %>% 
-  ggsave(filename = paste0("./data/result/ignored/fig_timetrend_across_SDGcate_", company_name, ".png"), 
+  ggsave(filename = paste0("./data/result/TimeTrend/fig_timetrend_across_SDGcate_", company_name, ".png"), 
          device = "png",
          dpi = 300, 
          units = "in",

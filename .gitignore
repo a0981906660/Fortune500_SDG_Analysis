@@ -5,7 +5,7 @@
 data/rds/*.rds
 data/rds
 data/raw_data/Fortune_500_report/*
-data/result/ignored/*
+data/result/TimeTrend/*
 # History files
 .Rhistory
 .Rapp.history
