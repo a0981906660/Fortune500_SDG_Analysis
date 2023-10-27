@@ -120,7 +120,7 @@ p1 <- df.plot %>%
                       breaks=c(0, 0.0025, 0.005) # breaks indicate percentile
                       ) +
   labs(x = "Company", y = "SDG", 
-       title = "Consumer Goods Manufacturing", 
+       title = "Mining, Quarrying, and Oil and Gas Extraction", 
        fill = "percentage") +
   # fill in colors in blank grids
   theme(panel.grid.major = element_blank(), 
