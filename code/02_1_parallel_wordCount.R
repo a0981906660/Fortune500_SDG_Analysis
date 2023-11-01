@@ -32,7 +32,7 @@ countWords <- function(splited_data) {
 }
 
 # Registrate workers
-n_cores <- 6
+n_cores <- 10
 cl <- makeCluster(n_cores)
 # clusterEvalQ(cl, library(matlib))
 clusterEvalQ(cl, library(purrr))
