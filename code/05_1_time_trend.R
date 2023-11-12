@@ -16,7 +16,8 @@ library(forcats)
 
 # Load data
 df <- read_rds("./data/cleaned_data/df_wordCount_NAICS21.rds")
-df_final_key <- read_rds("./data/cleaned_data/df_final_key.rds")
+# df_final_key <- read_rds("./data/cleaned_data/df_final_key_all.rds")
+df_final_key <- read_rds("./data/cleaned_data/df_final_key_SDSN.rds")
 
 str(df); class(df)
 # Merge SDG categories
@@ -58,7 +59,8 @@ df.plot <- df %>%
          sdg_number = as.numeric(sdg_number)) %>% 
   # set sdg as factor data
   mutate(sdg = as_factor(sdg)) %>% 
-  mutate(sdg = fct_reorder(sdg, sdg_number))
+  mutate(sdg = fct_reorder(sdg, sdg_number)) %>% 
+  filter(!is.na(sdg))
 
 ## Pick a company
 ## TODO: input a company's rank
