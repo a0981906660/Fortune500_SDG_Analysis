@@ -74,7 +74,10 @@ p1 <- df.plot %>%
   ggplot(aes(x = year, y = ratio, color = sdg)) +
   geom_line()+
   ggtitle(company_name)+
-  labs(x = "year", y = "percentage")
+  labs(x = "year", y = "percentage")+
+  #這兩行調x y 軸字大小
+  theme(axis.text.y = element_text(size = 10),
+        axis.text.x = element_text(size = 10))
 
 p1
 
@@ -92,5 +95,5 @@ p1 %>%
          device = "png",
          dpi = 300, 
          units = "in",
-         height = 12, width = 12)
+         height = 6, width = 6)
 
