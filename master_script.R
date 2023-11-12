@@ -21,6 +21,11 @@ source("./code/02_2_run_wordCount.R")
 # Go to the code and specify the NAICS codes to run 
 source("./code/03_1_TF-IDF.R")
 
+# step 4: Create a heatmap
+# Go to the code and specify the NAICS codes to run 
+# Also specify the keyword set to use in the code
+source("./code/04_1_Heatmap.R")
+
 
 
 

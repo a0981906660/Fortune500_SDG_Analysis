@@ -6,8 +6,9 @@ source("./code/utils/func.R",encoding = "")
 source("./code/utils/weakWords.R")
 
 #df_final_key 如果要用SDSN 的Keyword改這邊
-# TODO: Incorporate df_final_key_all.rds
-df_final_key <- read_rds("./data/cleaned_data/df_final_key.rds")
+# TODO: pick up a set of keywords to use
+# df_final_key <- read_rds("./data/cleaned_data/df_final_key_all.rds")
+df_final_key <- read_rds("./data/cleaned_data/df_final_key_SDSN.rds")
 df.RankCode <- getRankCodeMap("./data/raw_data/TM Final_FortuneG500 (2021)_v2.xlsx")
 
 # Load the NAICS code you want
@@ -88,7 +89,8 @@ df.long_join <- df.long %>%
 df.plot <- df.long_join %>%
   mutate(sdg_number = as.numeric(str_extract(sdg, "\\d+"))) %>%
   mutate(sdg = as_factor(sdg)) %>%
-  mutate(sdg = fct_reorder(sdg, sdg_number))
+  mutate(sdg = fct_reorder(sdg, sdg_number)) %>% 
+  filter(!is.na(sdg))
 
 # manually change company names
 # df.plot <- df.plot %>% 
@@ -141,3 +143,4 @@ p1 %>%
          dpi = 300, 
          units = "in",
          height = 12, width = 12)
+
