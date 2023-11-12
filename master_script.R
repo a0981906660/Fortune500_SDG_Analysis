@@ -26,11 +26,12 @@ source("./code/03_1_TF-IDF.R")
 # Also specify the keyword set to use in the code
 source("./code/04_1_Heatmap.R")
 
-# step 4: Create a time trend plot
+# step 5: Create a time trend plot
 # Go to the code and specify the NAICS codes to run and then pick up a company 
 # Also specify the keyword set to use in the code
 source("./code/05_1_time_trend.R")
 
-
-
+# step 6: Make a table for most frequent keywords and the SDG category it belongs to
+# Go to the code and specify the keyword set to use in the code
+source("./code/06_1_most_frequent_keyword.R")
 

@@ -14,9 +14,11 @@ findMostFreqKeyword <- function(NAICS_Code2) {
   # Load data based on NAICS code 
   # 可以在console 打NAICS_Code2 <- 21 (或其他產業)後看df.wordCount
   df.wordCount <- read_rds(paste0("./data/cleaned_data/df_wordCount_NAICS", NAICS_Code2, ".rds"))
-  df_final_key <- read_rds("./data/cleaned_data/df_final_key.rds")
+  # df_final_key <- read_rds("./data/cleaned_data/df_final_key.rds")
+  # df_final_key <- read_rds("./data/cleaned_data/df_final_key_all.rds")
+  df_final_key <- read_rds("./data/cleaned_data/df_final_key_SDSN.rds")
   
-  df.wordCount %>% filter(n_keyword > 0) %>% 
+  df.res <- df.wordCount %>% filter(n_keyword > 0) %>% 
     # merge back the original keyword
     left_join(df_final_key, by = c("keyword" = "word")) %>% 
     distinct() %>% 
@@ -38,7 +40,9 @@ findMostFreqKeyword <- function(NAICS_Code2) {
     select(original_keyword, sdg) %>% 
     # Remove special characters
     mutate(original_keyword = stringr::str_remove_all(original_keyword, "[[:punct:]]")) %>% 
-    return()
+    filter(!is.na(sdg))
+    
+    return(df.res)
 }
 
 # find the most frequent keywords across industry
