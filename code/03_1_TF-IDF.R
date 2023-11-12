@@ -8,7 +8,8 @@ source("./code/utils/func.R")
 source("./code/utils/weakWords.R")
 
 # Load keywords
-df_final_key <- read_rds("./data/cleaned_data/df_final_key.rds")
+# df_final_key <- read_rds("./data/cleaned_data/df_final_key.rds")
+df_final_key <- read_rds("./data/cleaned_data/df_final_key_all.rds")
 
 # IO of annual reports
 df.RankCode <- getRankCodeMap("./data/raw_data/TM Final_FortuneG500 (2021)_v2.xlsx")
@@ -27,7 +28,8 @@ df.tokens <- df.doc %>% unnest_tokens(word, value) %>%
   anti_join(stop_words) %>% 
   filter(!str_detect(word, "\\d+\\w")) %>% 
   filter(!str_detect(word, "\\d+")) %>% 
-  filter(!word %in% weak_words)
+  filter(!word %in% weak_words) %>% 
+  mutate(name = str_remove(name, "_\\d{4}"))
 
 ## regardless of year
 df.words <- df.tokens %>%
@@ -73,3 +75,4 @@ p1 %>%
          dpi = 300, 
          units = "in",
          height = 12, width = 12)
+
