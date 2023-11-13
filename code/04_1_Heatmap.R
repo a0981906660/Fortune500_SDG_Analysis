@@ -120,7 +120,7 @@ p1 <- df.plot %>%
   scale_fill_gradient(low = "snow", high = "navyblue", # change color
                       labels = scales::percent,
                       breaks=c(0, 0.0025, 0.005) # breaks indicate percentile
-                      ) +
+  ) +
   labs(x = "Company", y = "SDG", 
        title = "Mining, Quarrying, and Oil and Gas Extraction", 
        fill = "percentage") +
@@ -129,8 +129,12 @@ p1 <- df.plot %>%
         panel.grid.minor = element_blank(),
         panel.background = element_blank(), 
         axis.line = element_line(colour = "black")) +
-  theme(legend.position="bottom") #+
-  # set font
+  theme(legend.position="bottom",
+        #這兩行調x y 軸字大小
+        axis.text.y = element_text(size = 14),
+        axis.text.x = element_text(size = 10)) #+
+  
+# set font
   # theme(plot.title = element_text(family = "Noto Sans CJK TC Medium", face = "plain", size = 18),
   #       legend.text = element_text(family = "Noto Sans CJK TC Medium", face = "plain"), 
   #       text = element_text(family = "Noto Sans CJK TC Medium"))
@@ -142,5 +146,6 @@ p1 %>%
          device = "png",
          dpi = 300, 
          units = "in",
-         height = 12, width = 12)
+         # 調圖片長寬比（圖片大小）
+         height = 6, width = 11)
 
