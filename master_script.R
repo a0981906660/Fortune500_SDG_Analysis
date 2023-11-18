@@ -20,6 +20,7 @@ source("./code/02_2_run_wordCount.R")
 # step 3: Create a TF-IDF Plot
 # Go to the code and specify the NAICS codes to run 
 source("./code/03_1_TF-IDF.R")
+# 03 要哪個產業要到03內改
 
 # step 4: Create a heatmap
 # Go to the code and specify the NAICS codes to run 
