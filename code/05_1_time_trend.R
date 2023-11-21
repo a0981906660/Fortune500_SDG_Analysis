@@ -17,7 +17,7 @@ library(forcats)
 # Load data
 df <- read_rds("./data/cleaned_data/df_wordCount_NAICS21.rds")
 # df_final_key <- read_rds("./data/cleaned_data/df_final_key_all.rds")
-df_final_key <- read_rds("./data/cleaned_data/df_final_key_SDSN.rds")
+df_final_key <- read_rds("./data/cleaned_data/df_final_key.rds")
 
 str(df); class(df)
 # Merge SDG categories
