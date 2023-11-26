@@ -76,8 +76,8 @@ p1 <- df.plot %>%
   ggtitle(company_name)+
   labs(x = "year", y = "percentage")+
   #這兩行調x y 軸字大小
-  theme(axis.text.y = element_text(size = 10),
-        axis.text.x = element_text(size = 10))
+  theme(axis.text.y = element_text(size = 13),
+        axis.text.x = element_text(size = 13))
 
 p1
 

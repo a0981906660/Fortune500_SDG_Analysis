@@ -17,4 +17,6 @@ for (NAICS2_CODE in NAICS2_CODES) {
   # NAICS2 31; Time used:  6.595993 hours
   # NAICS2 33; Time used:  6.782853 hours
 }
-
+#>>> Time used:  21 :  9.268672 hours 
+#>>> Time used:  31 :  2.540388 hours 
+#>>> Time used:  33 :  1.053115 hours 

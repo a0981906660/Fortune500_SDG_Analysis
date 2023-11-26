@@ -131,8 +131,8 @@ p1 <- df.plot %>%
         axis.line = element_line(colour = "black")) +
   theme(legend.position="bottom",
         #這兩行調x y 軸字大小
-        axis.text.y = element_text(size = 14),
-        axis.text.x = element_text(size = 10)) #+
+        axis.text.y = element_text(size = 12),
+        axis.text.x = element_text(size = 8)) #+
   
 # set font
   # theme(plot.title = element_text(family = "Noto Sans CJK TC Medium", face = "plain", size = 18),
