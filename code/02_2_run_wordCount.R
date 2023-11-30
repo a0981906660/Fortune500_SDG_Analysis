@@ -2,7 +2,7 @@
 
 rm(list = ls())
 
-NAICS2_CODES <- c(21, 31, 33)
+NAICS2_CODES <- c(11, 22, 23, 32, 42, 44, 45, 48, 49, 51, 52, 53, 54, 55)
 # all industries in Excel: TM Final_FortuneG500 (2021)_v2
 # NAICS2_CODES <- c(11, 21, 22, 23, 31, 32, 33, 42, 44, 45, 48, 49, 51, 52, 53, 54, 55, 60, 62, 72)
 

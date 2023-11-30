@@ -57,3 +57,17 @@ po/*~
 # RStudio Connect folder
 rsconnect/
 record/Time and Payment.csv
+data/cleaned_data/df_wordCount_NAICS11.rds
+data/cleaned_data/df_wordCount_NAICS22.rds
+data/cleaned_data/df_wordCount_NAICS23.rds
+data/cleaned_data/df_wordCount_NAICS32.rds
+data/cleaned_data/df_wordCount_NAICS42.rds
+data/cleaned_data/df_wordCount_NAICS44.rds
+data/cleaned_data/df_wordCount_NAICS45.rds
+data/cleaned_data/df_wordCount_NAICS48.rds
+data/cleaned_data/df_wordCount_NAICS49.rds
+data/cleaned_data/df_wordCount_NAICS51.rds
+data/cleaned_data/df_wordCount_NAICS52.rds
+data/cleaned_data/df_wordCount_NAICS53.rds
+data/cleaned_data/df_wordCount_NAICS54.rds
+data/cleaned_data/df_wordCount_NAICS55.rds
