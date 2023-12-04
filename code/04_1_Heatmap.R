@@ -7,8 +7,8 @@ source("./code/utils/weakWords.R")
 
 #df_final_key 如果要用SDSN 的Keyword改這邊
 # TODO: pick up a set of keywords to use
-# df_final_key <- read_rds("./data/cleaned_data/df_final_key_all.rds")
-df_final_key <- read_rds("./data/cleaned_data/df_final_key.rds")
+df_final_key <- read_rds("./data/cleaned_data/df_final_key_all.rds")
+# df_final_key <- read_rds("./data/cleaned_data/df_final_key.rds")
 df.RankCode <- getRankCodeMap("./data/raw_data/TM Final_FortuneG500 (2021)_v2.xlsx")
 
 # Load the NAICS code you want
@@ -16,7 +16,7 @@ df.RankCode <- getRankCodeMap("./data/raw_data/TM Final_FortuneG500 (2021)_v2.xl
 ## df.doc <- readReports(NAICS2_CODE = 31)
 ## df.doc <- readReports(NAICS2_CODE = 21)
 ## df.doc <- readReports(NAICS2_CODE = 33)
-NAICS2 <- 21
+NAICS2 <- 31
 # We have name, rank, year, value (the content of the report) in the following datafram
 df.doc <- readReports(NAICS2_CODE = NAICS2)
 
