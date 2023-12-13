@@ -18,6 +18,7 @@ THE_SDG_CATEGORY <- "SDG13"
 data <- data_frame()
 # iterate through each NAICS code (industry)
 for (NAICS2 in NAICS2_CODES) {
+  print(NAICS2)
   source("./code/04_2_psuedo_data_manipulation.R")
   df_tmp <- df.plot %>% 
     select(rank, name, n_keyword, sdg) %>% 
