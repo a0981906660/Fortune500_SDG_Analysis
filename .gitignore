@@ -71,3 +71,10 @@ data/cleaned_data/df_wordCount_NAICS52.rds
 data/cleaned_data/df_wordCount_NAICS53.rds
 data/cleaned_data/df_wordCount_NAICS54.rds
 data/cleaned_data/df_wordCount_NAICS55.rds
+data/cleaned_data/df_wordCount_NAICS21.rds
+data/cleaned_data/df_wordCount_NAICS31.rds
+data/cleaned_data/df_wordCount_NAICS33.rds
+data/cleaned_data/df_wordCount_NAICS60.rds
+data/cleaned_data/df_wordCount_NAICS62.rds
+data/cleaned_data/df_wordCount_NAICS72.rds
+
