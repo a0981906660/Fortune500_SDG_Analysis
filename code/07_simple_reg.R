@@ -7,7 +7,10 @@ library(tidyr)
 rm(list = rm()); gc()
 
 # TODO: choose the industry and SDG category you want manually
-NAICS2_CODES <- c(21, 31)
+# all industries in Excel: TM Final_FortuneG500 (2021)_v2
+# NAICS2_CODES <- c(11, 21, 22, 23, 31, 32, 33, 42, 44, 45, 48, 49, 51, 52, 53, 54, 55, 60, 62, 72)
+
+NAICS2_CODES <- c(11, 21, 22, 23, 31, 32, 33, 42, 44, 45, 48, 49, 51, 52, 53, 54, 55, 60, 62, 72)
 THE_SDG_CATEGORY <- "SDG13"
 
 # change the NAICS code 
@@ -15,6 +18,7 @@ THE_SDG_CATEGORY <- "SDG13"
 data <- data_frame()
 # iterate through each NAICS code (industry)
 for (NAICS2 in NAICS2_CODES) {
+  print(NAICS2)
   source("./code/04_2_psuedo_data_manipulation.R")
   df_tmp <- df.plot %>% 
     select(rank, name, n_keyword, sdg) %>% 
