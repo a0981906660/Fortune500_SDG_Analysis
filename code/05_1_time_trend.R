@@ -68,6 +68,12 @@ AVAILABLE_COMPANIES <- df %>% select(name, rank) %>% distinct()
 company_rank <- 84
 company_name <- AVAILABLE_COMPANIES %>% filter(rank == company_rank) %>% pull(name)
 
+label_data <- df.plot |> 
+  filter(rank == company_rank) |> 
+  group_by(sdg) |> 
+  filter(year == max(year)) |> 
+  ungroup()
+
 # df.plot可以看每個sdg 次數及ratio
 p1 <- df.plot %>% 
   filter(rank == company_rank) %>% 
@@ -81,6 +87,20 @@ p1 <- df.plot %>%
 
 p1
 
+p2 <- df.plot |> 
+  # choose the company
+  filter(rank == company_rank) %>% 
+  ggplot(aes(x = year, y = ratio, color = sdg)) +
+  geom_line()+
+  geom_text(data = label_data, aes(label = sdg),
+            nudge_x = 0.5, check_overlap = TRUE, hjust = 0, vjust = 0)+
+  ggtitle(company_name)+
+  labs(x = "year", y = "percentage")+
+  #這兩行調x y 軸字大小
+  theme(axis.text.y = element_text(size = 13),
+        axis.text.x = element_text(size = 13))
+
+p2
 ## Save plot
 #p1 %>% 
   #ggsave(filename = paste0("./data/result/fig_timetrend_across_SDGcate_", company_name, ".png"), 

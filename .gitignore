@@ -1,5 +1,6 @@
 *_OLD.csv
 *_.rds
+*.RDS
 *_OLD.rds
 ~$*.xlsx
 data/rds/*.rds

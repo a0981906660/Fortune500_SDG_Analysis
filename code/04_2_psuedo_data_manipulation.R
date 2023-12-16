@@ -1,4 +1,4 @@
-rm(list = setdiff(ls(), c("NAICS2", "data", "THE_SDG_CATEGORY")))
+rm(list = setdiff(ls(), c("NAICS2", "subsdg_data", "sdg_data", "THE_SDG_CATEGORY", "NAICS2_CODES")))
 library(tidyverse)
 library(tidytext)
 library(ggplot2)
