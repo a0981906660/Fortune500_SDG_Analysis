@@ -1,4 +1,4 @@
-#' @title Create data for regressions
+#' @title Create sdg_data for regressions
 library(ggplot2)
 library(fixest)
 library(dplyr)
@@ -40,7 +40,7 @@ for (THE_SDG_CATEGORY in SDG_CATEGORIES) {
   # for testing purpose
   # THE_SDG_CATEGORY <- "SDG13"
   
-  # initiate an empty data frame
+  # initiate an empty sdg_data frame
   subsdg_data <- data_frame()
   # iterate through each NAICS code (industry)
   for (NAICS2 in NAICS2_CODES) {
@@ -58,22 +58,22 @@ for (THE_SDG_CATEGORY in SDG_CATEGORIES) {
   sdg_data <- bind_rows(sdg_data, subsdg_data)
 }
 
-# save the data
+# save the sdg_data
 sdg_data |> write_rds("./data/cleaned_data/df_regression_by_SDG_NAICS.RDS")
 
 
 # create indicator variables
 # TODO: add more indicators
-data <- data %>% 
+sdg_data <- sdg_data %>% 
   mutate(isNAICS21 = ifelse(naics == 21, 1, 0),
          isNAICS31 = ifelse(naics == 31, 1, 0),
          isNAICS11 = ifelse(naics == 11, 1, 0)) 
 
 # inspect column names
-data %>% colnames()
+sdg_data %>% colnames()
 
 # plot histograms to see the difference of distributions
-data %>% 
+sdg_data %>% 
   ggplot()+
   geom_histogram(aes(n_keyword))+
   facet_wrap(~naics, nrow = 2)
@@ -81,13 +81,13 @@ data %>%
 #' run regressions
 #' Identification:
 #'     the number of keywords mentioned in SDGXX by a company ~ industry indicators + error
-reg1 <- feols(n_keyword ~ isNAICS21, data = data)
+reg1 <- feols(n_keyword ~ isNAICS21, sdg_data = sdg_data)
 # show the regression table
 etable(reg1, coefstat = "tstat")
 
 # if there is more than one industry indicators...
 reg2 <- feols(n_keyword ~ isNAICS21 + isNAICS31 + isNAICS11 - 1, 
-              data = data)
+              sdg_data = sdg_data)
 etable(reg2, coefstat = "tstat")
 
 
