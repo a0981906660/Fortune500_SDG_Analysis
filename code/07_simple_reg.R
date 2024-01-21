@@ -4,7 +4,7 @@ library(fixest)
 library(dplyr)
 library(tidyr)
 
-rm(list = rm()); gc()
+rm(list = ls()); gc()
 
 # TODO: choose the industry and SDG category you want manually
 # all industries in Excel: TM Final_FortuneG500 (2021)_v2
@@ -20,6 +20,7 @@ rm(list = rm()); gc()
 #' 
 
 NAICS2_CODES <- c(11, 21, 22, 23, 31, 32, 33, 42, 44, 45, 48, 49, 51, 52, 53, 54, 60, 62, 72)
+NAICS2_CODES <- c(11, 21)
 SDG_CATEGORIES <- 0:16
 
 # testing
@@ -27,10 +28,10 @@ SDG_CATEGORIES <- 0:16
 # SDG_CATEGORIES <- 13:15
 
 
-# 3 dependent variables based on closeness of core business
-core_sdg_category <- c(21)
-complementary_sdg_category <- c(7, 8, 9, 11, 12, 13)
-unrelated_sdg_catory <- setdiff(SDG_CATEGORIES, c(core_sdg_category, complementary_sdg_category))
+# # 3 dependent variables based on closeness of core business
+# core_sdg_category <- c(21)
+# complementary_sdg_category <- c(7, 8, 9, 11, 12, 13)
+# unrelated_sdg_catory <- setdiff(SDG_CATEGORIES, c(core_sdg_category, complementary_sdg_category))
 
 # runs over each SDG category and each NAICS code
 sdg_data <- data_frame()
@@ -38,7 +39,7 @@ sdg_data <- data_frame()
 for (THE_SDG_CATEGORY in SDG_CATEGORIES) {
   
   # for testing purpose
-  # THE_SDG_CATEGORY <- "SDG13"
+  THE_SDG_CATEGORY <- paste0("SDG", THE_SDG_CATEGORY)
   
   # initiate an empty sdg_data frame
   subsdg_data <- data_frame()
@@ -81,13 +82,13 @@ sdg_data %>%
 #' run regressions
 #' Identification:
 #'     the number of keywords mentioned in SDGXX by a company ~ industry indicators + error
-reg1 <- feols(n_keyword ~ isNAICS21, sdg_data = sdg_data)
+reg1 <- feols(n_keyword ~ isNAICS21, data = sdg_data)
 # show the regression table
 etable(reg1, coefstat = "tstat")
 
 # if there is more than one industry indicators...
 reg2 <- feols(n_keyword ~ isNAICS21 + isNAICS31 + isNAICS11 - 1, 
-              sdg_data = sdg_data)
+              data = sdg_data)
 etable(reg2, coefstat = "tstat")
 
 

@@ -64,7 +64,7 @@ df.long <- df.combine %>%
   ) %>% 
   ungroup()
 
-
+# add 2 additional columns: the number of overall keywords and the percentage
 df.long_join <- df.long %>% 
   left_join(df.wordlen, by = c("rank", "name")) %>%
   mutate(per_keyword = n_keyword/n)
