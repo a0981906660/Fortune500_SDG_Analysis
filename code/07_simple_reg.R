@@ -28,10 +28,6 @@ SDG_CATEGORIES <- 0:16
 # SDG_CATEGORIES <- 13:15
 
 
-# # 3 dependent variables based on closeness of core business
-# core_sdg_category <- c(21)
-# complementary_sdg_category <- c(7, 8, 9, 11, 12, 13)
-# unrelated_sdg_catory <- setdiff(SDG_CATEGORIES, c(core_sdg_category, complementary_sdg_category))
 
 # runs over each SDG category and each NAICS code
 sdg_data <- data_frame()
@@ -66,9 +62,12 @@ sdg_data |> write_rds("./data/cleaned_data/df_regression_by_SDG_NAICS.RDS")
 # create indicator variables
 # TODO: add more indicators
 sdg_data <- sdg_data %>% 
+  # indicator of industry
   mutate(isNAICS21 = ifelse(naics == 21, 1, 0),
          isNAICS31 = ifelse(naics == 31, 1, 0),
-         isNAICS11 = ifelse(naics == 11, 1, 0)) 
+         isNAICS11 = ifelse(naics == 11, 1, 0)) %>% 
+  # indicator of SDG category
+  mutate(isSDG13 = ifelse(sdg == "SDG13", 1, 0))
 
 # inspect column names
 sdg_data %>% colnames()
@@ -82,7 +81,7 @@ sdg_data %>%
 #' run regressions
 #' Identification:
 #'     the number of keywords mentioned in SDGXX by a company ~ industry indicators + error
-reg1 <- feols(n_keyword ~ isNAICS21, data = sdg_data)
+reg1 <- feols(n_keyword ~ isNAICS21 + isSDG13 + isNAICS21 * isSDG13, data = sdg_data)
 # show the regression table
 etable(reg1, coefstat = "tstat")
 
@@ -90,5 +89,61 @@ etable(reg1, coefstat = "tstat")
 reg2 <- feols(n_keyword ~ isNAICS21 + isNAICS31 + isNAICS11 - 1, 
               data = sdg_data)
 etable(reg2, coefstat = "tstat")
+
+
+#' Compare NAICS 21 v.s. Non-21
+data <- sdg_data %>% 
+  # indicator of industry
+  mutate(isNAICS21 = ifelse(naics == 21, 1, 0)) %>% 
+  # indicator of core business SDG category
+  mutate(business_core = ifelse(sdg %in% c("SDG7", "SDG8","SDG9","SDG11","SDG12","SDG13"), 1, 0))
+
+reg3 <- feols(n_keyword ~ isNAICS21 + business_core + isNAICS21 * business_core, 
+              data = data)
+etable(reg3, coefstat = "tstat")
+
+data <- sdg_data %>% 
+  # indicator of industry
+  mutate(isNAICS21 = ifelse(naics == 21, 1, 0)) %>% 
+  # indicator of core business SDG category
+  mutate(sdg13 = ifelse(sdg == "SDG13", 1, 0),
+         sdg12 = ifelse(sdg == "SDG12", 1, 0),
+         sdg11 = ifelse(sdg == "SDG11", 1, 0),
+         sdg9 = ifelse(sdg == "SDG9", 1, 0),
+         sdg8 = ifelse(sdg == "SDG8", 1, 0),
+         sdg7 = ifelse(sdg == "SDG7", 1, 0),
+         ) 
+reg4a <- feols(SDG7 ~ isNAICS21, 
+              data = data %>% 
+                filter(sdg == "SDG7") %>% 
+                rename(SDG7 = n_keyword))
+reg4b <- feols(SDG8 ~ isNAICS21, 
+              data = data %>% 
+                filter(sdg == "SDG8") %>% 
+                rename(SDG8 = n_keyword))
+reg4c <- feols(SDG9 ~ isNAICS21, 
+              data = data %>% 
+                filter(sdg == "SDG9") %>% 
+                rename(SDG9 = n_keyword))
+reg4d <- feols(SDG11 ~ isNAICS21, 
+              data = data %>% 
+                filter(sdg == "SDG11") %>% 
+                rename(SDG11 = n_keyword))
+reg4e <- feols(SDG12 ~ isNAICS21, 
+              data = data %>% 
+                filter(sdg == "SDG12") %>% 
+                rename(SDG12 = n_keyword))
+reg4f <- feols(SDG13 ~ isNAICS21, 
+              data = data %>% 
+                filter(sdg == "SDG13") %>% 
+                rename(SDG13 = n_keyword))
+etable(reg4a, reg4b, reg4c, reg4d, reg4e, reg4f, 
+       coefstat = "tstat")
+etable(reg4a, reg4b, reg4c, reg4d, reg4e, reg4f, 
+       coefstat = "tstat", 
+       file = "./data/result/tables/tab_reg_analysis.tex",
+       replace = T)
+
+
 
 

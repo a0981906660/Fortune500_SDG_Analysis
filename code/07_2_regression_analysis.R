@@ -26,7 +26,7 @@ for (NAICS2 in NAICS2_CODES) {
            rank = as.numeric(str_extract(name, "\\d+")),
            name = str_replace(name, "\\d+\\s", ""))
   
-  ## Find the numerator regardless of year
+  ## Find the numerator 
   ## the group's primary key is firm's name and SDG category
   df.long <- df.combine %>% 
     filter(n_keyword > 0) %>%
@@ -55,7 +55,7 @@ sdg_data |> write_rds("./data/cleaned_data/df_regression_by_SDG_NAICS_firmyear.R
 
 # create indicator variables
 # TODO: add more indicators
-sdg_data <- sdg_data %>% 
+data <- sdg_data %>% 
   mutate(isNAICS21 = ifelse(naics == 21, 1, 0),
          isNAICS31 = ifelse(naics == 31, 1, 0),
          isNAICS11 = ifelse(naics == 11, 1, 0)) 
@@ -72,7 +72,8 @@ sdg_data %>%
 #' run regressions
 #' Identification:
 #'     the number of keywords mentioned in SDGXX by a company ~ industry indicators + error
-reg1 <- feols(n_keyword ~ isNAICS21, data = sdg_data)
+# add fixed effect
+reg1 <- feols(n_keyword ~ isNAICS21 | year, data = data)
 # show the regression table
 etable(reg1, coefstat = "tstat")
 
