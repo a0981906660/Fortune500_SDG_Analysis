@@ -20,7 +20,7 @@ rm(list = ls()); gc()
 #' 
 
 NAICS2_CODES <- c(11, 21, 22, 23, 31, 32, 33, 42, 44, 45, 48, 49, 51, 52, 53, 54, 60, 62, 72)
-NAICS2_CODES <- c(11, 21)
+# NAICS2_CODES <- c(11, 21)
 SDG_CATEGORIES <- 0:16
 
 # testing
