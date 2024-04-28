@@ -1,1 +1,501 @@
-007471
+gvkey	fyear	Rank	Name	
+011259	2021	1	Walmart	
+	2021	2	State Grid	private company compustat 上面看起來都不像
+064768	2021	3	Amazon	
+	2021	4	China National Petroleum	private companyh can't find gvkey
+	2021	5	Sinopec Group	private company compustat 上面看起來都不像
+001690	2021	6	Apple	
+007241	2021	7	CVS Health	
+010903	2021	8	UnitedHealth Group	
+019661	2021	9	Toyota Motor	在compustat global 上沒有看到ticker 能double check，但fortune 上是有ticker 的
+100737	2021	10	Volkswagen	
+help	2021	11	Berkshire Hathaway	ticker: BRKA 找不到
+007171	2021	12	McKesson	
+	2021	13	China State Construction Engineering	private companyh can't find gvkey
+355385	2021	14	Saudi Aramco	need help double check
+104604	2021	15	Samsung Electronics	
+160709	2021	16	Ping An Insurance	
+031673	2021	17	AmerisourceBergen	在這兩年間已經換了名字，現在叫cencora!!
+002410	2021	18	BP	help double check
+012384	2021	19	Royal Dutch Shell	help double check
+	2021	20	Industrial & Commercial Bank of China	can't find by company name on compustat
+160329	2021	21	Alphabet	
+203177	2021	22	Hon Hai Precision Industry	
+004503	2021	23	Exxon Mobil	
+017828	2021	24	Daimler	現叫Mercedes-Benz Group
+	2021	25	China Construction Bank	can't find by company name on compustat
+009899	2021	26	AT&T	
+029028	2021	27	Costco Wholesale	
+002547	2021	28	Cigna	
+269783	2021	29	Agricultural Bank of China	
+002751	2021	30	Cardinal Health	
+	2021	31	Trafigura Group	can't find by company name on compustat
+259503	2021	32	China Life Insurance	
+012141	2021	33	Microsoft	
+267407	2021	34	Glencore	double JEY 哪國家？？？
+	2021	35	China Railway Engineering Group	need help 找不到確定的一家
+011264	2021	36	Walgreens Boots Alliance	
+	2021	37	EXOR Group	can't find by company name on compustat
+015724	2021	38	Allianz	need help double check
+267461	2021	39	Bank of China	
+006502	2021	40	Kroger	
+005680	2021	41	Home Depot	
+	2021	42	China Railway Construction	有兩家一模一樣名稱的
+002968	2021	43	JPMorgan Chase	
+	2021	44	Huawei Investment & Holding	can't find by company name on compustat
+002131	2021	45	Verizon Communications	
+063120	2021	46	AXA	need help double check
+004839	2021	47	Ford Motor	
+005691	2021	48	Honda Motor	
+005073	2021	49	General Motors	
+145046	2021	50	Anthem	"已改名為Elevance Health, Inc"
+100555	2021	51	Mitsubishi	
+024625	2021	52	TotalEnergies	
+221616	2021	53	Deutsche Telekom	
+	2021	54	BMW Group	can't find by company name on compustat
+007908	2021	55	Nippon Telegraph and Telephone	
+	2021	56	China Mobile Communications	can't find by company name on compustat
+145552	2021	57	Centene	
+320611	2021	58	Japan Post Holdings	
+019744	2021	59	JD.com	
+243804	2021	60	SAIC Motor	
+	2021	61	China Communications Construction	can't find by company name on compustat
+	2021	62	Fannie Mae	Ticker: FNMA 只找到FNM.M啥意思
+020530	2021	63	Alibaba Group Holding	
+003226	2021	64	Comcast	
+	2021	65	China Minmetals	can't find by company name on compustat
+	2021	66	China FAW Group	can't find by company name on compustat
+	2021	67	Hengli Group	company not exactly the same on compustat
+	2021	68	Amer International Group	can't find by company name on compustat
+	2021	69	China Resources	private companyh can't find gvkey
+	2021	70	Shandong Energy Group	
+100435	2021	71	Itochu	
+	2021	72	China Baowu Steel Group	can't find by company name on compustat
+015804	2021	73	Assicurazioni Generali	
+	2021	74	China Post Group	can't find by company name on compustat
+002991	2021	75	Chevron	
+014489	2021	76	Dell Technologies	
+007647	2021	77	Bank of America	
+003813	2021	78	Target	
+016603	2021	79	Nestl_	
+006829	2021	80	Lowe's	
+186989	2021	81	Marathon Petroleum	
+003243	2021	82	Citigroup	
+104607	2021	83	Hyundai Motor	
+	2021	84	Gazprom	need help 找不到確定的一家
+274720	2021	85	Dongfeng Motor	
+170617	2021	86	Facebook (Meta Platforms Inc.)	
+	2021	87	Royal Ahold Delhaize	can't find by company name on compustat
+009818	2021	88	Sony	
+010920	2021	89	United Parcel Service	
+	2021	90	People's Insurance Co. of China	can't find by company name on compustat
+	2021	91	China Southern Power Grid	有兩家一模一樣名稱的
+	2021	92	China National Offshore Oil	can't find by company name on compustat
+024563	2021	93	Cr_dit Agricole	
+006266	2021	94	Johnson & Johnson	
+005650	2021	95	Hitachi	
+100346	2021	96	Carrefour	
+015532	2021	97	BNP Paribas	
+	2021	98	Bosch Group	need help 找不到確定的一家
+100131	2021	99	Tesco	
+222398	2021	100	AEON	
+	2021	101	China Energy Investment	can't find by company name on compustat
+	2021	102	HSBC Holdings	HSBC HLDGS PLC typo?????
+008007	2021	103	Wells Fargo	
+005047	2021	104	General Electric	
+	2021	105	Electricit_ de France	can't find by company name on compustat
+122594	2021	106	State Farm Insurance	似乎是private company (by fortune website）在網站上沒有ticker to double check
+	2021	107	PowerChina	can't find by company name on compustat
+006008	2021	108	Intel	
+292783	2021	109	Sinopharm	
+027914	2021	110	Humana	
+268456	2021	111	Nippon Life Insurance	
+	2021	112	COFCO	company not exactly the same on compustat
+	2021	113	Deutsche Post DHL Group	company not exactly the same on compustat
+007471	2021	114	Mitsui	
+	2021	115	CITIC Group	can't find by company name on compustat
+019113	2021	116	Nissan Motor	
+015677	2021	117	Munich Re Group	
+	2021	118	Enel	can't find by company name on compustat
+294309	2021	119	Dai-ichi Life Holdings	
+014140	2021	120	Banco Santander	
+006066	2021	121	International Business Machines	
+293139	2021	122	China Evergrande Group	
+	2021	123	U.S. Postal Service	private companyh can't find gvkey
+	2021	124	Beijing Automotive Group	can't find by company name on compustat
+206457	2021	125	Lukoil	
+	2021	126	China Telecommunications	can't find by company name on compustat
+	2021	127	China North Industries Group	
+008762	2021	128	Procter & Gamble	
+	2021	129	SK	company not exactly the same on compustat
+100590	2021	130	E.ON	
+008479	2021	131	PepsiCo	
+270615	2021	132	Tencent Holdings	
+025645	2021	133	Albertsons	
+	2021	134	BASF	
+004598	2021	135	FedEx	
+133768	2021	136	MetLife	
+267462	2021	137	Bank of Communications	
+	2021	138	Jinneng Holding Group	can't find by company name on compustat
+284408	2021	139	Country Garden Holdings	
+	2021	140	Aviation Industry Corp. of China	can't find by company name on compustat
+	2021	141	Freddie Mac	ticker 被reuse 找不到
+243820	2021	142	Greenland Holding Group	
+170841	2021	143	Phillips 66	
+006774	2021	144	Lockheed Martin	
+003980	2021	145	Walt Disney	
+001722	2021	146	Archer Daniels Midland (ADM)	
+	2021	147	Roche Group	
+	2021	148	Xiamen C&D	
+	2021	149	Pacific Construction Group	
+	2021	150	Siemens	
+	2021	151	Sinochem	
+	2021	152	Engie	
+	2021	153	Legal & General Group	
+	2021	154	Panasonic	
+	2021	155	Reliance Industries	
+	2021	156	Brookfield Asset Management	
+	2021	157	Aviva	
+	2021	158	China Pacific Insurance (Group)	
+	2021	159	Lenovo Group	
+	2021	160	China Vanke	
+	2021	161	ChemChina	
+	2021	162	China Merchants Bank	
+	2021	163	China Merchants Group	
+015247	2021	164	Valero Energy	
+	2021	165	Marubeni	
+	2021	166	ENEOS Holdings	
+	2021	167	Toyota Tsusho	
+	2021	168	Zurich Insurance Group	
+	2021	169	Manulife Financial	
+	2021	170	Wuchan Zhongda Group	
+	2021	171	Xiamen ITG Holding Group	
+	2021	172	Aegon	
+002285	2021	173	Boeing	
+	2021	174	China Poly Group	
+	2021	175	Unilever	
+	2021	176	Guangzhou Automobile Industry Group	
+	2021	177	China National Building Material Group	
+143356	2021	178	Prudential Financial	
+	2021	179	Airbus	
+	2021	180	Mitsubishi UFJ Financial Group	
+	2021	181	Petrobras	
+005606	2021	182	HP	
+010983	2021	183	Raytheon Technologies	改名了，現在叫RTX Corporation
+	2021	184	SoftBank Group	
+	2021	185	Prudential PLC	
+	2021	186	Fortum	
+	2021	187	Tokyo Electric Power	
+	2021	188	Seven & I Holdings	
+	2021	189	XMXYG	
+031521	2021	190	StoneX	
+	2021	191	Alimentation Couche-Tard	
+	2021	192	LG Electronics	
+114628	2021	193	Goldman Sachs Group	
+	2021	194	China Everbright Group	
+	2021	195	Rosneft Oil	
+	2021	196	Industrial Bank	
+	2021	197	ArcelorMittal	
+	2021	198	Aluminum Corp. of China	
+010247	2021	199	Sysco	
+	2021	200	HBIS Group	
+	2021	201	Shanghai Pudong Development Bank	
+	2021	202	JBS	
+	2021	203	Soci_t_ G_n_rale	
+012124	2021	204	Morgan Stanley	
+	2021	205	State Bank of India	
+	2021	206	PTT	
+022260	2021	207	HCA Healthcare	
+	2021	208	Tokio Marine Holdings	
+	2021	209	Vodafone Group	
+	2021	210	Christian Dior	
+	2021	211	Wilmar International	
+	2021	212	Indian Oil	
+	2021	213	AIA Group	
+	2021	214	Vinci	
+	2021	215	Kia	
+	2021	216	ENI	
+	2021	217	KDDI	
+	2021	218	Novartis	
+	2021	219	Renault	
+	2021	220	Shaanxi Coal & Chemical Industry	
+020779	2021	221	Cisco Systems	
+	2021	222	Korea Electric Power	
+	2021	223	Telef_nica	
+	2021	224	China Minsheng Banking	
+	2021	225	Jiangxi Copper	
+	2021	226	POSCO	
+	2021	227	Bayer	
+	2021	228	Power Corp. of Canada	
+	2021	229	Orange	
+126136	2021	230	Charter Communications	
+	2021	231	COSCO Shipping	
+007257	2021	232	Merck	
+	2021	233	ELO Group	
+	2021	234	Shaanxi Yanchang Petroleum (Group)	
+	2021	235	Pegatron	
+	2021	236	Anheuser-Busch InBev	
+	2021	237	Am_rica M_vil	
+002184	2021	238	Best Buy	
+	2021	239	Zhejiang Geely Holding Group	
+	2021	240	China State Shipbuilding	
+	2021	241	Talanx	
+127774	2021	242	New York Life Insurance	private company
+	2021	243	Oil & Natural Gas	
+	2021	244	Denso	
+	2021	245	MS&AD Insurance Group Holdings	
+	2021	246	Equinor	
+016101	2021	247	AbbVie	
+	2021	248	China Huaneng Group	
+	2021	249	Nippon Steel Corporation	
+	2021	250	Royal Bank of Canada	
+	2021	251	Taiwan Semiconductor Manufacturing	
+	2021	252	Deutsche Bahn	
+	2021	253	Publix Super Markets	Fortune上ticker 是PFE 但compustat 上公司名一模一樣，ticker 卻是PUSH 怎辦
+028349	2021	254	Allstate	
+	2021	255	Zhejiang Rongsheng Holding Group	
+	2021	256	Rio Tinto Group	
+	2021	257	Pemex	
+	2021	258	Accenture	
+	2021	259	Edeka Zentrale	
+	2021	260	China United Network Communications	
+	2021	261	Sumitomo	
+122575	2021	262	Liberty Mutual Insurance Group	private company 為什麼private company 在fortune 上面都不放ticker 但我在compustat 上面找到一模一樣名字的其實還是有ticker
+001487	2021	263	American International Group	
+	2021	264	GlaxoSmithKline	
+	2021	265	Groupe BPCE	
+	2021	266	Saint-Gobain	
+	2021	267	Lloyds Banking Group	
+	2021	268	Swiss Re	
+	2021	269	Sberbank	
+010793	2021	270	Tyson Foods	
+	2021	271	Hanwha	
+	2021	272	Continental	
+	2021	273	BHP Group	
+	2021	274	Woolworths Group	
+013341	2021	275	Progressive	
+	2021	276	Sanofi	
+	2021	277	Petronas	
+002403	2021	278	Bristol-Myers Squibb	
+	2021	279	Tsingshan Holding Group	
+	2021	280	Nationwide	private company 需要幫忙找這家
+008530	2021	281	Pfizer	
+	2021	282	Shandong Weiqiao Pioneering Group	
+002817	2021	283	Caterpillar	
+	2021	284	Sinomach	
+	2021	285	TIAA	private company 需要幫忙找這家
+	2021	286	Ingka Group	
+	2021	287	Pertamina	
+	2021	288	Midea Group	
+144435	2021	289	Bunge	
+	2021	290	Fresenius	
+	2021	291	Intesa Sanpaolo	
+	2021	292	George Weston	
+	2021	293	State Power Investment	
+	2021	294	Vale	
+	2021	295	ACS	
+	2021	296	Toronto-Dominion Bank	
+	2021	297	Maersk	
+	2021	298	ThyssenKrupp	
+	2021	299	Bouygues	
+	2021	300	Mitsubishi Electric	
+	2021	301	China Energy Engineering Group	
+	2021	302	UBS Group	
+	2021	303	Finatis	
+012142	2021	304	Oracle	
+165649	2021	305	Energy Transfer	
+	2021	306	Daiwa House Industry	
+	2021	307	China Aerospace Science & Technology	
+	2021	308	Jiangsu Shagang Group	
+	2021	309	Zhejiang Hengyi Group	
+034443	2021	310	Dow	
+	2021	311	Shenghong Holding Group	
+001447	2021	312	American Express	
+	2021	313	Meiji Yasuda Life Insurance	
+	2021	314	J. Sainsbury	
+	2021	315	Anhui Conch Group	
+005046	2021	316	General Dynamics	
+	2021	317	Deutsche Bank	
+	2021	318	Idemitsu Kosan	
+	2021	319	Iberdrola	
+	2021	320	China Aerospace Science & Industry	
+007906	2021	321	Nike	
+	2021	322	Ita_ Unibanco Holding	
+	2021	323	ZF Friedrichshafen	
+	2021	324	Quanta Computer	
+	2021	325	Sumitomo Mitsui Financial Group	
+007985	2021	326	Northrop Grumman	幫double check
+	2021	327	Volvo	
+	2021	328	Suning.com Group	
+	2021	329	Metro	
+	2021	330	USAA	private company 需要幫忙找這家
+	2021	331	Sompo Holdings	
+	2021	332	Yango Longking Group	
+	2021	333	Chubb	
+	2021	334	China Electronics	
+	2021	335	Heraeus Holding	
+	2021	336	Jinchuan Group	
+	2021	337	Banco Bilbao Vizcaya Argentaria	
+	2021	338	Xiaomi	
+	2021	339	Compal Electronics	
+	2021	340	Deere	找不到
+	2021	341	La Poste	
+	2021	342	DZ Bank	
+	2021	343	Taikang Insurance Group	
+	2021	344	China Taiping Insurance Group	
+	2021	345	Barclays	
+	2021	346	Cathay Financial Holding	
+	2021	347	Mitsubishi Heavy Industries	
+	2021	348	Rajesh Exports	
+	2021	349	CRRC Group	
+001078	2021	350	Abbott Laboratories	
+	2021	351	China South Industries Group	
+	2021	352	China Huadian	
+	2021	353	CK Hutchison Holdings	
+	2021	354	China Electronics Technology Group	
+	2021	355	Poste Italiane	
+	2021	356	SNCF Group	
+	2021	357	Tata Motors	
+	2021	358	Fujitsu	
+	2021	359	Cedar Holdings Group	
+	2021	360	Northwestern Mutual	need help fortune 網頁壞了怎麼check
+004016	2021	361	Dollar General	
+	2021	362	Louis Dreyfus	
+	2021	363	Shanghai Construction Group	
+	2021	364	Sunac China Holdings	
+	2021	365	Aisin	
+	2021	366	KB Financial Group	
+	2021	367	Sumitomo Life Insurance	
+	2021	368	British American Tobacco	
+008539	2021	369	Exelon	need help fortune 網頁壞了怎麼check
+003144	2021	370	Coca-Cola	
+	2021	371	China National Nuclear	
+	2021	372	Magna International	
+	2021	372	Jardine Matheson	
+001300	2021	374	Honeywell International	
+	2021	375	Jingye Group	
+	2021	376	Bank of Nova Scotia	
+	2021	377	Phoenix Pharma	
+	2021	378	Credit Suisse Group	
+	2021	379	Sun Life Financial	
+010530	2021	380	Thermo Fisher Scientific	
+	2021	381	Repsol	
+007435	2021	382	3M	
+011672	2021	383	TJX	
+	2021	384	Shandong Iron & Steel Group	
+062689	2021	385	Travelers	
+	2021	386	Migros Group	
+	2021	387	L’Or_al	
+	2021	388	Fubon Financial Holding	
+030990	2021	389	Capital One Financial	
+	2021	390	New Hope Holding Group	
+	2021	391	ING Group	
+184996	2021	392	Tesla	
+	2021	393	CMA CGM	
+	2021	394	Bharat Petroleum	
+	2021	395	SAP	
+	2021	396	Shenzhen Investment Holdings	
+	2021	397	Coop Group	
+	2021	398	Hyundai Mobis	
+	2021	399	Anglo American	
+	2021	400	Ansteel Group	
+	2021	401	Mitsubishi Chemical Holdings	
+	2021	402	Siemens Energy	
+	2021	403	Shanxi Coking Coal Group	
+	2021	404	JFE Holdings	
+	2021	405	Haier Smart Home	
+	2021	406	Mizuho Financial Group	
+	2021	407	TongLing Nonferrous Metals Group	
+	2021	408	Medipal Holdings	
+	2021	409	Takeda Pharmaceutical	
+	2021	410	ABB	
+	2021	411	Shougang Group	
+	2021	412	Suzuki Motor	
+	2021	413	Veolia Environnement	
+	2021	414	Canon	
+	2021	415	New China Life Insurance	
+	2021	416	Samsung Life Insurance	
+	2021	417	Kansai Electric Power	
+	2021	418	Enbridge	
+	2021	419	Medtronic	
+	2021	420	Toshiba	
+	2021	421	Wistron	
+179621	2021	422	Philip Morris International	
+001773	2021	423	Arrow Electronics	
+	2021	424	Schneider Electric	
+	2021	425	Weichai Power	
+	2021	426	Banco Bradesco	
+	2021	427	Phoenix Group Holdings	
+	2021	428	Hailiang Group	
+	2021	429	CHS	need help
+	2021	430	China General Technology	
+	2021	431	Beijing Jianlong Heavy Industry Group	
+	2021	432	NEC	
+	2021	433	Zhejiang Communications Investment Group	
+	2021	434	Bridgestone	
+	2021	435	China Datang	
+	2021	436	BT Group	
+	2021	437	Shanghai Pharmaceuticals Holding	
+	2021	438	LyondellBasell Industries	
+	2021	439	Guangxi Investment Group	
+	2021	440	Chubu Electric Power	
+	2021	441	CRH	
+	2021	442	Sumitomo Electric Industries	
+	2021	443	Financi_re de l'Odet	
+	2021	444	Xinjiang Guanghui Industry Investment	
+	2021	445	X5 Retail Group	
+028195	2021	446	Jabil	
+	2021	447	Linde	
+112876	2021	448	Enterprise Products Partners	
+	2021	449	Mazda Motor	
+	2021	450	CJ Corp.	
+	2021	451	China National Coal Group	
+	2021	452	SK Hynix	
+026156	2021	453	Hewlett Packard Enterprise	
+	2021	454	Danone	
+	2021	455	Achmea	
+	2021	456	Longfor Group Holdings	
+063927	2021	457	United Natural Foods	
+	2021	458	Centrica	
+	2021	459	Subaru	
+	2021	460	Guangzhou Municipal Construction Group	
+	2021	461	LG Chem	
+	2021	462	AstraZeneca	
+142953	2021	463	Mondelez International	
+	2021	464	Boehringer Ingelheim	
+013714	2021	465	ViacomCBS	改名了，現在叫Paramount Global 
+005568	2021	466	Kraft Heinz	
+	2021	467	Ko_ Holding	
+	2021	468	Guangzhou Pharmaceutical Holdings	
+	2021	469	Olam International	
+	2021	470	China Resources Land	
+	2021	471	Yunnan Provincial Investment Holding Group	
+	2021	472	Bank of Montreal	
+	2021	473	Samsung C&T	
+	2021	474	WH Group	
+031587	2021	475	Dollar Tree	
+001602	2021	476	Amgen	
+	2021	477	Compass Group	
+	2021	478	Coles Group	
+004723	2021	479	U.S. Bancorp	
+	2021	480	Ericsson	
+	2021	481	Huayang New Material Technology Group	
+	2021	482	Banco do Brasil	
+028787	2021	483	Performance Food Group	
+147579	2021	484	Netflix	
+	2021	485	Nokia	
+	2021	486	Zijin Mining Group	
+	2021	487	BAE Systems	
+	2021	488	Gree Electric Appliances	
+024856	2021	489	Gilead Sciences	
+156155	2021	490	TD Synnex	
+	2021	491	UniCredit Group	
+	2021	492	Holcim	
+	2021	493	Mapfre Group	
+	2021	494	Alfresa Holdings	
+006730	2021	495	Eli Lilly	
+011856	2021	496	Truist Financial	
+	2021	497	China Reinsurance (Group)	
+	2021	498	Commonwealth Bank of Australia	
+	2021	499	Flex	
+009155	2021	500	Rite Aid	need help ticker 不同，但看起來是同公司
