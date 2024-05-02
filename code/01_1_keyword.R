@@ -98,6 +98,9 @@ process_keywords <- function(keyword_file) {
   return(df_final_key_SDSN)
 }
 
+# the above are processing issues in keyword list (such as *, AND, or, ect.)
+# below 2 lines are input of keyword list
+
 df_all <- process_keywords("./data/raw_data/keyword/Keyword_all.csv")
 df_SDSN <- process_keywords("./data/raw_data/keyword/Keyword_SDSN.csv")
 

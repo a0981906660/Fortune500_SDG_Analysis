@@ -11,7 +11,7 @@ source("./code/01_1_keyword.R")
 source("./code/02_2_run_wordCount.R")
 
 #' @note a simpler version without parallel computing is in the misc folder
-#' Uncomment the following code to run. They're no longer supported.
+#' The following script in misc folder is no longer in use, but it's a simpler version for reference.
 # NAICS2_CODE <- 31
 # source("./code/misc/02_1_countH_adjusted.R")
 # NAICS2_CODE <- 33
