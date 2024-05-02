@@ -9,7 +9,7 @@ source("./code/utils/weakWords.R")
 
 # Load keywords
 # df_final_key <- read_rds("./data/cleaned_data/df_final_key.rds")
-df_final_key <- read_rds("./data/cleaned_data/df_final_key.rds")
+df_final_key <- read_rds("./data/cleaned_data/df_final_key_all.rds")
 
 # IO of annual reports
 df.RankCode <- getRankCodeMap("./data/raw_data/TM Final_FortuneG500 (2021)_v2.xlsx")

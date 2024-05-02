@@ -16,7 +16,7 @@ findMostFreqKeyword <- function(NAICS_Code2) {
   df.wordCount <- read_rds(paste0("./data/cleaned_data/df_wordCount_NAICS", NAICS_Code2, ".rds"))
   # df_final_key <- read_rds("./data/cleaned_data/df_final_key.rds")
   # df_final_key <- read_rds("./data/cleaned_data/df_final_key_all.rds")
-  df_final_key <- read_rds("./data/cleaned_data/df_final_key.rds")
+  df_final_key <- read_rds("./data/cleaned_data/df_final_key_all.rds")
   
   df.res <- df.wordCount %>% filter(n_keyword > 0) %>% 
     # merge back the original keyword
