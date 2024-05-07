@@ -34,10 +34,11 @@ findMostFreqKeyword <- function(NAICS_Code2) {
     distinct() %>% 
     # take the top 15 most frequent
     slice(1:15) %>% 
-    select(sdg, original_keyword) %>% 
+    #add or remove n_keyword to include or exclude frequency column
+    select(sdg, original_keyword, n_keyword) %>% #add or remove n_keyword here
     mutate(sdg = unlist(sdg)) %>% 
     # reorder columns
-    select(original_keyword, sdg) %>% 
+    select(original_keyword, n_keyword, sdg) %>% #add or remove n_keyword here
     # Remove special characters
     mutate(original_keyword = stringr::str_remove_all(original_keyword, "[[:punct:]]")) %>% 
     filter(!is.na(sdg))
@@ -50,14 +51,19 @@ col21 <- findMostFreqKeyword(21)
 col31 <- findMostFreqKeyword(31)
 col33 <- findMostFreqKeyword(33)
 
+# TODO: delete all 3 `Frequency` to drop out frequency column
 df.table <- bind_cols(
   NAICS21 = col21$original_keyword,
   `SDG` = col21$sdg,
+  `Frequency` = col21$n_keyword,
+  # TODO: if only want column 21, comment codes below
   NAICS31 = col31$original_keyword,
   `SDG ` = col31$sdg,
+  `Frequency ` = col31$n_keyword,
   NAICS33 = col33$original_keyword,
-  `SDG  ` = col33$sdg
-)
+  `SDG  ` = col33$sdg,
+  `Frequency  ` = col33$n_keyword
+ )
 
 
 # make a table
