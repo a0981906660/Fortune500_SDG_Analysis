@@ -16,7 +16,7 @@ df.RankCode <- getRankCodeMap("./data/raw_data/TM Final_FortuneG500 (2021)_v2.xl
 ## df.doc <- readReports(NAICS2_CODE = 31)
 ## df.doc <- readReports(NAICS2_CODE = 21)
 ## df.doc <- readReports(NAICS2_CODE = 33)
-NAICS2 <- 31
+NAICS2 <- 21
 # We have name, rank, year, value (the content of the report) in the following datafram
 df.doc <- readReports(NAICS2_CODE = NAICS2)
 
