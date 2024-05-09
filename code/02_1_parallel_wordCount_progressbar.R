@@ -1,6 +1,8 @@
 # rm(list = ls())
 rm(list = setdiff(ls(), c("NAICS2_CODE", "NAICS2_CODES", "timeSpent", "t0", "t1")))
+# NAICS2_CODE = 21
 library(tidyverse)
+library(readr)
 library(tidytext)
 library(stringi)
 library(fs)
@@ -21,14 +23,30 @@ registerDoParallel(cl)
 
 
 # define function used in parallel computing
-countWords <- function(splited_data) {
+countWords <- function(splited_data, index, total) {
+
+  # loggin into file
+  progress_message <- sprintf("Processing %d of %d\n", index, total)
+  write_lines(progress_message, paste0("./logs/progress", index, ".log"))
+  t0_sub <- Sys.time()
+  
   counter <- 0
   counter_end <- length(df_final_key$word)
   df_keyword_n <- tibble()
   for (keyword in df_final_key$word) {
+    
+    # logging
     name <- splited_data$name[1] 
     counter <- counter + 1
-    cat(">>> Progress: ", round(counter/counter_end, 4)*100, "%", "\n>>> Company : ", name, "\n") 
+    
+    if (counter %% 100 == 0) {
+      t1_sub <- Sys.time()
+      progress_message <- paste0(">>> Progress: ", round(counter/counter_end, 4)*100, "%", "\n>>> Company : ", name, "\n",
+                                 "Time spending:", format(t1_sub - t0_sub), "\n",
+                                 "Avg time spend:", format((t1_sub - t0_sub)/counter) ) 
+      write_lines(progress_message, paste0("./logs/progress", index, ".log"), append = TRUE)
+    }
+    
     n_keyword <- splited_data %>% 
       mutate(text = tolower(text)) %>% 
       pull(text) %>% 
@@ -72,17 +90,20 @@ dfs_sentence <- split(df_sentence, df_sentence$name)
 length(dfs_sentence)
 
 # Create a progress bar
-total <- length(dfs_sentence)
-pb <- progress::progress_bar$new(format = "  [:bar] :percent :elapsed", total = total, clear = FALSE, width = 60)
+# total <- length(dfs_sentence)
+# pb <- progress::progress_bar$new(format = "  [:bar] :percent :elapsed", total = total, clear = FALSE, width = 60)
 
 # do parallel
 t1 <- Sys.time()
 cat(">>> Doing parallel computing with ", n_cores, " cores.\n")
 # Modify the foreach loop to update the progress bar
-res <- foreach(x = dfs_sentence, .combine = rbind, .packages = c("dplyr", "purrr", "stringi")) %dopar% {
-  result <- countWords(x)
-  pb$tick()  # Update the progress bar
-  result
+res <- foreach(x = seq_along(dfs_sentence), 
+               .combine = rbind, 
+               # .export = c("pb"), 
+               .packages = c("dplyr", "purrr", "stringi", "progress", "readr")) %dopar% {
+  result <- countWords(dfs_sentence[[x]], x, length(dfs_sentence))
+  # pb$tick()  # Update the progress bar
+  # result
 }
 t2 <- Sys.time()
 cat(">>> Time used: ", format(t2 - t1), "\n")

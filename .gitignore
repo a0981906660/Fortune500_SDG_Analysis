@@ -80,3 +80,5 @@ data/cleaned_data/df_wordCount_NAICS62.rds
 data/cleaned_data/df_wordCount_NAICS72.rds
 
 data/company_reference/ccm_comphist.csv
+
+logs/*
