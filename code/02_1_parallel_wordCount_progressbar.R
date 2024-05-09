@@ -11,10 +11,14 @@ library(doFuture)
 library(progressr)
 source("./code/utils/func.R", encoding = '')
 
-# to enable progress reporting
-registerDoFuture()
-plan(multiprocess)
-handlers(global = TRUE)
+# Set up parallel backend
+# Registrate workers
+n_cores <- parallel::detectCores() - 1  # Leave one core free for system processes
+cl <- makeCluster(n_cores)
+clusterEvalQ(cl, library(purrr))
+clusterEvalQ(cl, library(dplyr))
+registerDoParallel(cl)
+
 
 # define function used in parallel computing
 countWords <- function(splited_data) {
@@ -38,14 +42,6 @@ countWords <- function(splited_data) {
   return(df_keyword_n)
 }
 
-# Registrate workers
-n_cores <- 10
-cl <- makeCluster(n_cores)
-# clusterEvalQ(cl, library(matlib))
-clusterEvalQ(cl, library(purrr))
-clusterEvalQ(cl, library(dplyr))
-registerDoParallel(cl)
-# registerDoParallel(n_cores) # use multicore, set to the number of cores
 
 # Load data
 df_final_key <- read_rds("./data/cleaned_data/df_final_key_all.rds")
@@ -70,48 +66,31 @@ df_sentence <- df.doc %>%
   drop_na() %>% 
   arrange(rank)
 
-# # Parallel computing
-# ## testing
-# set.seed(12345)
-# df_sentence_sample <- df_sentence[sample(1:nrow(df_sentence), 10),]
-# dfs_sentence <- split(df_sentence_sample, df_sentence_sample$name)
-# length(dfs_sentence)
-# # do parallel
-# t0 <- Sys.time()
-# res <- foreach (x = dfs_sentence,
-#                 .combine = rbind) %dopar% {
-#                   countWords(x)
-#                 }
-# t1 <- Sys.time()
-# cat(">>> Time used: ", format(t1 - t0), "\n")
-
-
-## Applying
+# Parallel computing
 ## split dataframe by firm-year value
 dfs_sentence <- split(df_sentence, df_sentence$name)
 length(dfs_sentence)
 
+# Create a progress bar
+total <- length(dfs_sentence)
+pb <- progress::progress_bar$new(format = "  [:bar] :percent :elapsed", total = total, clear = FALSE, width = 60)
+
 # do parallel
 t1 <- Sys.time()
 cat(">>> Doing parallel computing with ", n_cores, " cores.\n")
-with_progress({
-  p <- progressor(steps = length(dfs_sentence))
-  res <- foreach (x = dfs_sentence, .combine = rbind, .packages = c("dplyr", "purrr", "stringi")) %dopar% {
-    p()  # Update the progress bar
-    countWords(x)
-  }
-})
+# Modify the foreach loop to update the progress bar
+res <- foreach(x = dfs_sentence, .combine = rbind, .packages = c("dplyr", "purrr", "stringi")) %dopar% {
+  result <- countWords(x)
+  pb$tick()  # Update the progress bar
+  result
+}
 t2 <- Sys.time()
 cat(">>> Time used: ", format(t2 - t1), "\n")
+
 
 ## Save files
 path_name <- paste0("./data/cleaned_data/df_wordCount_NAICS", NAICS2_CODE, ".rds")
 res %>% write_rds(path_name)
 
 parallel::stopCluster(cl)
-
-
-
-
-
 
