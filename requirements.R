@@ -3,7 +3,8 @@ pkgLoad <- function( packages = "requirements" ) {
   if( length( packages ) == 1L && packages == "requirements" ) {
   
     packages <- c( "tidyverse", "tidytext", "fs", "stringi", "readxl",
-                   "hash", "viridis", "ggrepel", "assertthat", "haven", "forcats")
+                   "hash", "viridis", "ggrepel", "assertthat", "haven", "forcats",
+                   "doFuture", "progressr")
   }
   
   packagecheck <- match( packages, utils::installed.packages()[,1] )

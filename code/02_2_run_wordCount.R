@@ -13,7 +13,8 @@ timeSpent <- c()
 for (NAICS2_CODE in NAICS2_CODES) {
   # timing
   t0 <- Sys.time()
-  source("./code/02_1_parallel_wordCount.R")
+  # source("./code/02_1_parallel_wordCount.R")
+  source("./code/02_1_parallel_wordCount_progressbar.R")
   t_end <- Sys.time()
   timeSpent <- c(timeSpent, t_end - t0)
   cat(">>> Time used: ", NAICS2_CODE, ": ",format(t_end - t0), "\n")
