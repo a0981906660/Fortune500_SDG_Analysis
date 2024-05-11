@@ -1,6 +1,6 @@
 # rm(list = ls())
 rm(list = setdiff(ls(), c("NAICS2_CODE", "NAICS2_CODES", "timeSpent", "t0", "t1")))
-# NAICS2_CODE = 21
+NAICS2_CODE = 11
 library(tidyverse)
 library(readr)
 library(tidytext)
@@ -28,7 +28,7 @@ countWords <- function(splited_data, index = NULL, total = NULL, the_naics_code 
 
   # loggin into file
   progress_message <- sprintf("Processing %d of %d\n", index, total)
-  write_lines(progress_message, paste0("./logs/progress_", the_naics_code, , "_", index, ".log"))
+  write_lines(progress_message, paste0("./logs/progress_NAICS", the_naics_code, "_", index, ".log"))
   t0_sub <- Sys.time()
   
   counter <- 0
@@ -45,7 +45,7 @@ countWords <- function(splited_data, index = NULL, total = NULL, the_naics_code 
       progress_message <- paste0(">>> Progress: ", round(counter/counter_end, 4)*100, "%", "\n>>> Company : ", name, "\n",
                                  "Time spending:", format(t1_sub - t0_sub), "\n",
                                  "Avg time spend:", format((t1_sub - t0_sub)/counter) ) 
-      write_lines(progress_message, paste0("./logs/progress", index, ".log"), append = TRUE)
+      write_lines(progress_message, paste0("./logs/progress_NAICS", the_naics_code, "_", index, ".log"), append = TRUE)
     }
     
     n_keyword <- splited_data %>% 
