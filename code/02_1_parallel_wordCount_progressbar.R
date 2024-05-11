@@ -23,11 +23,12 @@ registerDoParallel(cl)
 
 
 # define function used in parallel computing
-countWords <- function(splited_data, index, total) {
+# index, total, and NAICS codes are passed only for logging
+countWords <- function(splited_data, index = NULL, total = NULL, the_naics_code = NULL) {
 
   # loggin into file
   progress_message <- sprintf("Processing %d of %d\n", index, total)
-  write_lines(progress_message, paste0("./logs/progress", index, ".log"))
+  write_lines(progress_message, paste0("./logs/progress_", the_naics_code, , "_", index, ".log"))
   t0_sub <- Sys.time()
   
   counter <- 0
@@ -101,7 +102,10 @@ res <- foreach(x = seq_along(dfs_sentence),
                .combine = rbind, 
                # .export = c("pb"), 
                .packages = c("dplyr", "purrr", "stringi", "progress", "readr")) %dopar% {
-  result <- countWords(dfs_sentence[[x]], x, length(dfs_sentence))
+  result <- countWords(dfs_sentence[[x]], 
+                       index = x, 
+                       total = length(dfs_sentence), 
+                       the_naics_code = NAICS2_CODE)
   # pb$tick()  # Update the progress bar
   # result
 }
