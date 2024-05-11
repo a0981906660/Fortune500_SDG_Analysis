@@ -100,7 +100,7 @@ cat(">>> Doing parallel computing with ", n_cores, " cores.\n")
 # Modify the foreach loop to update the progress bar
 res <- foreach(x = seq_along(dfs_sentence), 
                .combine = rbind, 
-               # .export = c("pb"), 
+               .export = c("NAICS2_CODE"), 
                .packages = c("dplyr", "purrr", "stringi", "progress", "readr")) %dopar% {
   result <- countWords(dfs_sentence[[x]], 
                        index = x, 
