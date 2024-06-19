@@ -18,13 +18,14 @@ source("./code/02_2_run_wordCount.R")
 # source("./code/misc/02_1_countH_adjusted.R")
 
 # step 3: Create a TF-IDF Plot
-# Go to the code and specify the NAICS codes to run 
+# Go to the code and specify the NAICS codes to run
+# TODO change NAICS in 03_1
 source("./code/03_1_TF-IDF.R")
-# 03 要哪個產業要到03內改
 
 # step 4: Create a heatmap
 # Go to the code and specify the NAICS codes to run 
 # Also specify the keyword set to use in the code
+# TODO change NAICS in 04_1
 source("./code/04_1_Heatmap.R")
 
 # step 5: Create a time trend plot
