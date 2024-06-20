@@ -1,3 +1,4 @@
+.env
 *_OLD.csv
 *_.rds
 *.RDS
