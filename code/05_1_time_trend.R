@@ -74,16 +74,42 @@ label_data <- df.plot |>
   filter(year == max(year)) |> 
   ungroup()
 
-# df.plot可以看每個sdg 次數及ratio
+# # df.plot可以看每個sdg 次數及ratio
+# p1 <- df.plot %>% 
+#   filter(rank == company_rank) %>% 
+#   ggplot(aes(x = year, y = ratio, color = sdg)) +
+#   geom_line()+
+#   ggtitle(company_name)+
+#   labs(x = "year", y = "percentage")+
+#   #這兩行調x y 軸字大小
+#   theme(axis.text.y = element_text(size = 13),
+#         axis.text.x = element_text(size = 13))
+# 
+# p1
+
+# Find top 5 SDG categories for the last year (2020)
+top_5_sdg <- df.plot %>%
+  filter(rank == company_rank, year == 2020) %>%
+  # choose the top n SDG categories to show a text box
+  top_n(3, ratio) %>%
+  pull(sdg)
+
+# Plot the data
 p1 <- df.plot %>% 
   filter(rank == company_rank) %>% 
   ggplot(aes(x = year, y = ratio, color = sdg)) +
-  geom_line()+
-  ggtitle(company_name)+
-  labs(x = "year", y = "percentage")+
-  #這兩行調x y 軸字大小
+  geom_line() +
+  ggtitle(company_name) +
+  labs(x = "Year", y = "Percentage") +
   theme(axis.text.y = element_text(size = 13),
-        axis.text.x = element_text(size = 13))
+        axis.text.x = element_text(size = 13)) +
+  # add text box to the end of 2020 data that indicates the top n SDG category
+  geom_text(data = df.plot %>% 
+              # TODO: change the hard-coded year in the following line
+              # the year must be the last available year
+              filter(rank == company_rank, sdg %in% top_5_sdg, year == 2020),
+            aes(label = sdg, y = ratio + 0.5),
+            size = 3, hjust = 0.5, vjust = 0, check_overlap = TRUE)
 
 p1
 
@@ -115,5 +141,5 @@ p1 %>%
          device = "png",
          dpi = 300, 
          units = "in",
-         height = 6, width = 6)
+         height = 6, width = 8)
 
