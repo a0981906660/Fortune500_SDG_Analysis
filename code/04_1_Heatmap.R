@@ -115,11 +115,13 @@ p1 <- df.plot %>%
   # grid plot
   geom_tile() +
   coord_flip() +
-  theme_bw() +
+  #theme_bw() +
+  #theme_minimal() +
+  theme_linedraw() +
   scale_linetype(guide = "none") +
-  scale_fill_gradient(low = "snow", high = "navyblue", # change color
-                      labels = scales::percent,
-                      breaks=c(0, 0.0025, 0.005) # breaks indicate percentile
+  scale_fill_gradient(low = "snow", high = "navy", # change color
+                      labels = scales::percent
+                      #breaks=c(0, 1) # breaks indicate percentile
   ) +
   labs(x = "Company", y = "SDG", 
        title = "Mining, Quarrying, and Oil and Gas Extraction", 
@@ -128,11 +130,12 @@ p1 <- df.plot %>%
   theme(panel.grid.major = element_blank(), 
         panel.grid.minor = element_blank(),
         panel.background = element_blank(), 
-        axis.line = element_line(colour = "black")) +
+        #axis.line = element_line(colour = "black") #axis line bold and black
+        ) +
   theme(legend.position="bottom",
         #這兩行調x y 軸字大小
         axis.text.y = element_text(size = 12),
-        axis.text.x = element_text(size = 8)) #+
+        axis.text.x = element_text(size = 12)) #+
   
 # set font
   # theme(plot.title = element_text(family = "Noto Sans CJK TC Medium", face = "plain", size = 18),
@@ -147,5 +150,5 @@ p1 %>%
          dpi = 300, 
          units = "in",
          # 調圖片長寬比（圖片大小）
-         height = 6, width = 11)
+         height = 7, width = 15)
 
