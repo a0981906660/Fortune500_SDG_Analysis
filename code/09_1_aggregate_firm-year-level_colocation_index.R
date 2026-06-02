@@ -141,3 +141,9 @@ for (NAICS2 in NAICS2_CODES) {
 sdg_data |> write_rds(
   glue("{DROPBOX_PATH}/cleaned_data/df_colocation_index_firm-year_level.RDS")
 )
+
+# export firm-year level colocation index as Excel for inspection
+library(writexl)
+sdg_data |> write_xlsx(
+  glue("{DROPBOX_PATH}/cleaned_data/df_colocation_index_firm-year_level.xlsx")
+)

@@ -176,7 +176,7 @@ for (page_i in seq_along(pages)) {
   ggsave(
     plot     = p1,
     filename = glue(
-      "./data/result/fig_heatmap_NAICS{NAICS2}{suffix}.png"
+      "./data/result/Heatmap/fig_heatmap_NAICS{NAICS2}{suffix}.png"
     ),
     device = "png", dpi = 600, units = "in",
     height = plot_height, width = 19
@@ -209,7 +209,7 @@ for (page_i in seq_along(pages)) {
   ggsave(
     plot     = p2,
     filename = glue(
-      "./data/result/fig_heatmap_alt_NAICS{NAICS2}{suffix}.png"
+      "./data/result/Heatmap/fig_heatmap_alt_NAICS{NAICS2}{suffix}.png"
     ),
     device = "png", dpi = 600, units = "in",
     height = plot_height, width = 19
