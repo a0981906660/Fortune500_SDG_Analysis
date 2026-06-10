@@ -81,7 +81,7 @@ cat(">>> Rows in df.master:", nrow(df.master), "\n")
 # Load keyword count data
 # =============================================================================
 df <- read_rds(
-  glue("{DROPBOX_PATH}/cleaned_data/df_wordCount_NAICS{NAICS2_CODE}.rds")
+  glue("{DROPBOX_PATH}/cleaned_data/df_wordCount_NAICS{NAICS2_CODE}_correct.RDS")
 )
 
 # =============================================================================

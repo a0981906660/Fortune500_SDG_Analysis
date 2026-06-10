@@ -48,7 +48,7 @@ df.wordlen <- df.wordlen %>%
 df.word %>% head()
 df_final_key %>% head()
 # TODO: make sure the names of firms are aligned
-df.wordCount <- read_rds(glue("{DROPBOX_PATH}/cleaned_data/df_wordCount_NAICS", NAICS2, ".rds")) %>%
+df.wordCount <- read_rds(glue("{DROPBOX_PATH}/cleaned_data/df_wordCount_NAICS", NAICS2, "_correct.RDS")) %>%
   mutate(company_name = stringr::str_remove(name, "_\\d+$"),
          year = stringr::str_extract(name, "\\d{4}$")) %>%
   mutate(name = company_name) %>%

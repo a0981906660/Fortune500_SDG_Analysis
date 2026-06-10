@@ -43,7 +43,7 @@ df.master <- readxl::read_excel(
   distinct(gvkey, .keep_all = TRUE)
 
 df <- read_rds(
-  glue("{DROPBOX_PATH}/cleaned_data/df_wordCount_NAICS{NAICS2_CODE}.rds")
+  glue("{DROPBOX_PATH}/cleaned_data/df_wordCount_NAICS{NAICS2_CODE}_correct.RDS")
 )
 
 # =============================================================================

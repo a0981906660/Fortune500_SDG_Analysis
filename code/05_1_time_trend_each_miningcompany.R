@@ -33,7 +33,7 @@ df.Gvkey <- getGvkeyMap(
 )
 
 df <- read_rds(
-  glue("{DROPBOX_PATH}/cleaned_data/df_wordCount_NAICS{NAICS2_CODE}.rds")
+  glue("{DROPBOX_PATH}/cleaned_data/df_wordCount_NAICS{NAICS2_CODE}_correct.RDS")
 )
 
 # =============================================================================
