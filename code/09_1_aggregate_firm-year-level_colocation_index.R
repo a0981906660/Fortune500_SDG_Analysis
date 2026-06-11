@@ -33,10 +33,21 @@ sdg_data <- tibble()
 # sum up firm-year-SDG level count -> firm-year-SDG level colocation index
 for (NAICS2 in NAICS2_CODES) {
   # Load keyword counts (need to attach the corresponding SDG category label)
-  df.wordCount <- read_rds(
-    glue("{DROPBOX_PATH}/cleaned_data/",
-         "df_colocation_CIP_wordcount_NAICS{NAICS2}.RDS")
-  )
+ 
+  #讀取舊的df_colocation_CIP_wordcount_NAICS{NAICS2}.RDS檔
+  # df.wordCount <- read_rds(
+  #   glue("{DROPBOX_PATH}/cleaned_data/",
+  #        "df_colocation_CIP_wordcount_NAICS{NAICS2}.RDS")
+  # )
+  
+  #只有NAICS 21 改讀
+  cip_file <- if (NAICS2 == 21) {
+    glue("{DROPBOX_PATH}/cleaned_data/df_colocation_CIP_wordcount_NAICS21_correct.RDS")
+  } else {
+    glue("{DROPBOX_PATH}/cleaned_data/df_colocation_CIP_wordcount_NAICS{NAICS2}.RDS")
+  }
+  df.wordCount <- read_rds(cip_file)
+  
   # attach SDG label, parse year/name, and attach gvkey
   df.combine <- df.wordCount %>%
     left_join(df_final_key, by = c("keyword" = "word")) %>%
@@ -97,10 +108,19 @@ sdg_data <- tibble()
 # sum up firm-year level count -> firm-year level colocation index
 for (NAICS2 in NAICS2_CODES) {
   # Load keyword counts (need to attach the corresponding SDG category label)
-  df.wordCount <- read_rds(
-    glue("{DROPBOX_PATH}/cleaned_data/",
-         "df_colocation_CIP_wordcount_NAICS{NAICS2}.RDS")
-  )
+  
+  # df.wordCount <- read_rds(
+  #   glue("{DROPBOX_PATH}/cleaned_data/",
+  #        "df_colocation_CIP_wordcount_NAICS{NAICS2}.RDS")
+  # )
+  
+  cip_file <- if (NAICS2 == 21) {
+    glue("{DROPBOX_PATH}/cleaned_data/df_colocation_CIP_wordcount_NAICS21_correct.RDS")
+  } else {
+    glue("{DROPBOX_PATH}/cleaned_data/df_colocation_CIP_wordcount_NAICS{NAICS2}.RDS")
+  }
+  df.wordCount <- read_rds(cip_file)
+  
   # attach SDG label, parse year/name, and attach gvkey
   df.combine <- df.wordCount %>%
     left_join(df_final_key, by = c("keyword" = "word")) %>%
