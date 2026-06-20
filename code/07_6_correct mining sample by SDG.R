@@ -273,11 +273,132 @@ fdr_on_complementarity(res_noFE,        "ROA, no FE")
 fdr_on_complementarity(res_yearFE,      "ROA, year FE")
 fdr_on_complementarity(res_yearcountry, "ROA, year + country FE")
 cat("==========================================================\n")
+#以下是新的 BH check
+# =============================================================================
+# 8b. Multiple-comparison check (Benjamini-Hochberg) for the OTHER TWO indices
+#     Independence Index and Pressure Index, mirroring the section-8 check that
+#     was run only for the Complementarity Index. One BH family per FE spec
+#     (17 SDGs within a spec), identical to how section 8 corrects
+#     Complementarity. Each (index x spec) result is written to its own .tex in
+#     OUT_DIR, named so it does NOT overwrite the Complementarity BH tables:
+#       tab_bh_independence_noFE.tex / _yearFE.tex / _yearcountryFE.tex
+#       tab_bh_pressure_noFE.tex     / _yearFE.tex / _yearcountryFE.tex
+# =============================================================================
 
+# Generic "BH on one index" helper: pull the chosen index's p-values across
+# SDGs, BH-correct within the spec, print, and save a .tex in the same layout
+# as the section-8 tables (columns: SDG, Estimate, p (raw), p (BH)).
+fdr_on_index <- function(models, index_col, index_label, spec_caption,
+                         file_tag, spec_tag, out_dir) {
+  if (length(models) == 0) return(invisible(NULL))
+  
+  rows <- imap_dfr(models, function(m, lab) {
+    ct <- tryCatch(coeftable(m), error = function(e) NULL)
+    if (is.null(ct)) return(NULL)
+    i <- which(rownames(ct) == index_col)
+    if (length(i) == 0) return(NULL)
+    tibble(sdg = lab, estimate = ct[i, 1], p_raw = ct[i, 4])
+  })
+  if (nrow(rows) == 0) return(invisible(NULL))
+  
+  rows <- rows %>%
+    mutate(p_BH = p.adjust(p_raw, method = "BH")) %>%
+    arrange(p_raw)
+  
+  cat(glue("\n--- {index_label} across SDGs, BH-adjusted ({spec_caption}) ---\n"))
+  print(rows, n = 30)
+  
+  fmt  <- function(x) formatC(x, format = "f", digits = 4)
+  body <- paste0(rows$sdg, " & ", fmt(rows$estimate), " & ",
+                 fmt(rows$p_raw), " & ", fmt(rows$p_BH), "\\\\",
+                 collapse = "\n")
+  tex <- paste0(
+    "\\begin{table}[!h]\n\n",
+    "\\caption{", index_label,
+    " by SDG, Benjamini-Hochberg adjusted (", spec_caption, ")}\n",
+    "\\centering\n",
+    "\\begin{tabular}[t]{lrrr}\n",
+    "\\toprule\n",
+    "SDG & Estimate & p (raw) & p (BH)\\\\\n",
+    "\\midrule\n",
+    body, "\n",
+    "\\bottomrule\n",
+    "\\end{tabular}\n",
+    "\\end{table}\n"
+  )
+  out_file <- glue("{out_dir}/tab_bh_{file_tag}_{spec_tag}.tex")
+  writeLines(tex, out_file)
+  cat(glue("  saved: {out_file}\n"))
+  
+  invisible(rows)
+}
 
+# Reuse the three model lists built in section 7, and the two indices that
+# still need correcting (Complementarity is already done in section 8).
+bh_specs <- list(
+  list(models = res_noFE,        tag = "noFE",          caption = "no fixed effects"),
+  list(models = res_yearFE,      tag = "yearFE",        caption = "year fixed effects"),
+  list(models = res_yearcountry, tag = "yearcountryFE", caption = "year and country fixed effects")
+)
+bh_indices <- list(
+  list(col = "colocate_index_independent", label = "Independence Index", file = "independence"),
+  list(col = "colocate_index_pressure",    label = "Pressure Index",     file = "pressure")
+)
+
+cat("\n\n========= BH CHECK: Independence & Pressure indices =========\n")
+cat("BH family = 17 SDGs within each FE spec (same convention as section 8).\n")
+for (sp in bh_specs) {
+  for (ix in bh_indices) {
+    fdr_on_index(
+      models       = sp$models,
+      index_col    = ix$col,
+      index_label  = ix$label,
+      spec_caption = sp$caption,
+      file_tag     = ix$file,
+      spec_tag     = sp$tag,
+      out_dir      = OUT_DIR
+    )
+  }
+}
+cat("============================================================\n")
+#以上是新的 BH check
 cat("\n\nDone. Three tables saved to", OUT_DIR, ":\n")
 cat("  tab_reg_roa_mining_persdg_noFE.tex\n")
 cat("  tab_reg_roa_mining_persdg_yearFE.tex\n")
 cat("  tab_reg_roa_mining_persdg_yearcountryFE.tex\n")
 cat("\nReminder: these are EXPLORATORY. Lead with the BH-adjusted check, not the\n")
 cat("raw stars, and do not interpret any single SDG in isolation.\n")
+
+# ---------------------------------------------------------------------------
+# Export the Benjamini-Hochberg tables to LaTeX (one per FE spec).
+# Captures the data frame that fdr_on_complementarity() returns invisibly.
+# ---------------------------------------------------------------------------
+library(knitr)
+library(kableExtra)
+
+bh_noFE        <- fdr_on_complementarity(res_noFE,        "ROA, no FE")
+bh_yearFE      <- fdr_on_complementarity(res_yearFE,      "ROA, year FE")
+bh_yearcountry <- fdr_on_complementarity(res_yearcountry, "ROA, year + country FE")
+
+save_bh_table <- function(bh_df, filename, caption) {
+  bh_df %>%
+    mutate(
+      estimate = round(estimate, 4),
+      p_raw    = round(p_raw, 4),
+      p_BH     = round(p_BH, 4)
+    ) %>%
+    rename(SDG = sdg, Estimate = estimate,
+           `p (raw)` = p_raw, `p (BH)` = p_BH) %>%
+    kbl(caption = caption, booktabs = TRUE, format = "latex", linesep = "") %>%
+    kable_styling(latex_options = c("hold_position")) %>%
+    save_kable(file = glue("{OUT_DIR}/{filename}.tex"))
+}
+
+save_bh_table(bh_noFE,        "tab_bh_complementarity_noFE",
+              "Complementarity Index by SDG, Benjamini-Hochberg adjusted (no fixed effects)")
+save_bh_table(bh_yearFE,      "tab_bh_complementarity_yearFE",
+              "Complementarity Index by SDG, Benjamini-Hochberg adjusted (year fixed effects)")
+save_bh_table(bh_yearcountry, "tab_bh_complementarity_yearcountryFE",
+              "Complementarity Index by SDG, Benjamini-Hochberg adjusted (year and country fixed effects)")
+
+cat("\n>>> BH tables saved to", OUT_DIR, "\n")
